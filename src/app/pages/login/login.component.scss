@@ -1,0 +1,34 @@
+
+.botao {
+    background-color: #2B7111;
+    border-color: #2B7111;
+}
+
+.logo {
+    width: 30%;
+    height: 30%;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+input {
+    margin: 10px;
+}
+
+img{
+    margin: 10px;
+}
+
+.imagemLogin {
+    position: center;
+    height: 100vh;
+    width: 100%;
+    background-image: url(../../../assets/img/login1.jpg);
+    background-size: cover;
+}
