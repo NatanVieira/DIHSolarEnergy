@@ -1,12 +1,12 @@
 <div class="d-flex flex-column">
-    <img class="logo" src="../../../assets/img/logo.png" alt="logo">
-    <div class="flex-row botao" [ngClass]="{'ativo': dashAtivo}">
-            <span><fa-icon [icon]="faChartPie"></fa-icon> Dashboard</span>
+    <img class="logo" src="../../../assets/img/logo.png" alt="logo" data-toggle="tooltip" data-placement="top" title="Home">
+    <div class="flex-row botao" data-toggle="tooltip" data-placement="top" title="Dashboard" [ngClass]="{'ativo': dashAtivo}">
+        <span><fa-icon [icon]="faChartPie"></fa-icon></span><span class="telaPequena"> Dashboard</span>
     </div>
-    <div class="flex-row botao" [ngClass]="{'ativo': unidAtivo}">
-        <span><fa-icon [icon]="faBookOpen"></fa-icon> Unidades Consumidoras</span>
+    <div class="flex-row botao" data-toggle="tooltip" data-placement="top" title="Unidades Consumidoras" [ngClass]="{'ativo': unidAtivo}">
+        <span><fa-icon [icon]="faBookOpen"></fa-icon></span><span class="telaPequena"> Unidades Consumidoras</span>
     </div> 
-    <div class="flex-row botao" [ngClass]="{'ativo': cadastroAtivo}">
-        <span><fa-icon [icon]="faGear"></fa-icon> Cadastro de Consumo</span>
+    <div class="flex-row botao" data-toggle="tooltip" data-placement="top" title="Cadastro de consumo" [ngClass]="{'ativo': cadastroAtivo}">
+        <span><fa-icon [icon]="faGear"></fa-icon></span><span class="telaPequena"> Cadastro de Consumo</span>
     </div>
 </div>
