@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="menuLateral col-2">
+            <dih-menu-lateral 
+            [cadastroAtivo]="titulo == 'Cadastro de Consumo' ? true : false"
+            [dashAtivo]="titulo == 'Dashboard' ? true : false"
+            [unidAtivo]="titulo == 'Unidades Consumidoras' ? true : false"></dih-menu-lateral>
+        </div>
+        <div class="col-10">
+            <div class="row">
+                <h1 class="titulo">{{titulo}}</h1>
+                <div class="conteudo">
+                    <span>teste conteudo</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
