@@ -1,0 +1,21 @@
+
+.table {
+    color:#009DFF; 
+}
+tr:hover {
+    background-color: #FF6200;;
+    color: white;
+}
+
+thead > tr:hover {
+    background-color: white;
+    color: black;
+}
+
+.table > thead {
+    color: black;
+}
+
+.row {
+    margin-bottom: 2.5%;
+}

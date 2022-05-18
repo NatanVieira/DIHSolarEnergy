@@ -1,1 +1,35 @@
-<p>unidades works!</p>
+<div class="container-fluid">
+    <div class="row">
+        <button class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Cadastrar nova unidade"><span><fa-icon [icon]="faStar"></fa-icon></span> Cadastrar nova unidade</button>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Apelido</th>
+                        <th>Local</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of listaUnidades">
+                        <td>{{item.id}}</td>
+                        <td>{{item.apelido}}</td>
+                        <td>{{item.local}}</td>
+                        <td>{{item.marca}}</td>
+                        <td>{{item.modelo}}</td>
+                        <td>
+                            <button class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Editar"><span><fa-icon [icon]="faPencil"></fa-icon></span></button>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Remover"><span><fa-icon [icon]="faRemove"></fa-icon></span></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

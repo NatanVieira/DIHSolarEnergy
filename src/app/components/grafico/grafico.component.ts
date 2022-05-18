@@ -30,19 +30,43 @@ export class GraficoComponent implements OnInit {
       }
     },
     scales: {
-      // We use this empty structure as a placeholder for dynamic theming.
       x: {
         ticks : {
-          color: '#FF6200'
-        }
+          color: '#FF6200',
+          font: {
+            family: 'KGBlankSpace'
+          }
+        },
+        title: {
+          text: '*Últimos 12 meses',
+          align: 'end',
+          display: true,
+          color: '#FF6200',
+          font: {
+            family: 'KGBlankSpace'
+          }
+        },
       },
       'y-axis-0':
         {
           ticks: {
-            color: '#FF6200'
+            color: '#FF6200',
+            font: {
+              family: 'KGBlankSpace'
+            }
           }
         }
     },
+    plugins: {
+      legend: {
+        labels:{
+          font: {
+            family: 'KGBlankSpace',
+          },
+          color: '#FF6200'
+        }
+      }
+    }
   };
 
   @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
