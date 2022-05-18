@@ -7,9 +7,6 @@ import { faChartPie, faBookOpen, faGear } from '@fortawesome/free-solid-svg-icon
 })
 export class MenuLateralComponent implements OnInit {
   @Input() titulo: string = '';
-  @Input() dashAtivo: boolean = true;
-  @Input() unidAtivo: boolean = false;
-  @Input() cadastroAtivo: boolean = false;
   faChartPie = faChartPie;
   faBookOpen = faBookOpen;
   faGear = faGear;

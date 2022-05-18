@@ -1,16 +1,16 @@
 <div class="container-fluid">
     <div class="row">
         <div class="menuLateral col-2">
-            <dih-menu-lateral 
-            [cadastroAtivo]="titulo == 'Cadastro de Consumo' ? true : false"
-            [dashAtivo]="titulo == 'Dashboard' ? true : false"
-            [unidAtivo]="titulo == 'Unidades Consumidoras' ? true : false"></dih-menu-lateral>
+            <dih-menu-lateral [titulo]="titulo"></dih-menu-lateral>
         </div>
         <div class="col-10">
             <div class="row">
                 <h1 class="titulo">{{titulo}}</h1>
-                <div class="conteudo">
-                    <span>teste conteudo</span>
+                <div  [ngSwitch]="titulo" class="conteudo">
+                    <div *ngSwitchCase="'Dashboard'"><dih-cdashboard></dih-cdashboard></div>
+                    <div *ngSwitchCase="'Unidades'"><dih-unidades></dih-unidades></div>
+                    <div *ngSwitchCase="'Cadastro de consumo'"><dih-cadastro></dih-cadastro></div>
+                    <div *ngSwitchDefault><dih-cdashboard></dih-cdashboard></div>
                 </div>
             </div>
         </div>
