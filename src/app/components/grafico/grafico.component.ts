@@ -13,11 +13,11 @@ export class GraficoComponent implements OnInit {
       {
         data: [ 65, 59, 80, 81, 56, 55, 40, 55, 75, 90, 105, 15],
         label: 'Consumo (kW)',
-        backgroundColor: '#009DFF',
-        borderColor: '#009DFF',
-        pointBackgroundColor: '#009DFF',
-        pointHoverBackgroundColor: '#009DFF',
-        pointHoverBorderColor: '#009DFF',
+        backgroundColor: '#EC6500',
+        borderColor: '#EC6500',
+        pointBackgroundColor: '#EC6500',
+        pointHoverBackgroundColor: '#EC6500',
+        pointHoverBorderColor: '#EC6500',
       }],
       labels: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
     }
@@ -32,7 +32,7 @@ export class GraficoComponent implements OnInit {
     scales: {
       x: {
         ticks : {
-          color: '#FF6200',
+          color: 'black',
           font: {
             family: 'KGBlankSpace'
           }
@@ -41,7 +41,7 @@ export class GraficoComponent implements OnInit {
           text: '*Últimos 12 meses',
           align: 'end',
           display: true,
-          color: '#FF6200',
+          color: 'black', //
           font: {
             family: 'KGBlankSpace'
           }
@@ -50,7 +50,7 @@ export class GraficoComponent implements OnInit {
       'y-axis-0':
         {
           ticks: {
-            color: '#FF6200',
+            color: 'black',
             font: {
               family: 'KGBlankSpace'
             }
@@ -63,7 +63,7 @@ export class GraficoComponent implements OnInit {
           font: {
             family: 'KGBlankSpace',
           },
-          color: '#FF6200'
+          color: 'black'
         }
       }
     }

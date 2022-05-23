@@ -1,12 +1,15 @@
 <div class="d-flex flex-column">
     <img class="logo" src="../../../assets/img/logo.png" alt="logo" data-toggle="tooltip" data-placement="top" title="Home">
     <div class="flex-row botao" data-toggle="tooltip" data-placement="top" title="Dashboard" [ngClass]="{'ativo': titulo === 'Dashboard'}">
-        <span><fa-icon [icon]="faChartPie"></fa-icon></span><span class="telaPequena"> Dashboard</span>
+        <span><fa-icon [icon]="faChartPie" routerLink="/dashboard"></fa-icon></span><span class="telaPequena" routerLink="/dashboard"> Dashboard</span>
     </div>
     <div class="flex-row botao" data-toggle="tooltip" data-placement="top" title="Unidades Consumidoras" [ngClass]="{'ativo': titulo === 'Unidades'}">
-        <span><fa-icon [icon]="faBookOpen"></fa-icon></span><span class="telaPequena"> Unidades Consumidoras</span>
+        <span><fa-icon [icon]="faBookOpen" routerLink="/unidades"></fa-icon></span><span class="telaPequena" routerLink="/unidades"> Unidades Consumidoras</span>
     </div> 
-    <div class="flex-row botao" data-toggle="tooltip" data-placement="top" title="Cadastro de consumo" [ngClass]="{'ativo': titulo === 'Cadastro de consumo'}">
-        <span><fa-icon [icon]="faGear"></fa-icon></span><span class="telaPequena"> Cadastro de Consumo</span>
+    <div class="flex-row botao" data-toggle="tooltip" data-placement="top" title="Cadastro de geração" [ngClass]="{'ativo': titulo === 'Cadastro de consumo'}">
+        <span><fa-icon [icon]="faGear" routerLink="/cadastro-geracao"></fa-icon></span><span class="telaPequena" routerLink="/cadastro-geracao"> Cadastro de Geração</span>
+    </div>
+    <div class="flex-row botao" data-toggle="tooltip" data-placement="top" title="Sair">
+        <span><fa-icon [icon]="faClose" routerLink="/login"></fa-icon></span><span class="telaPequena" routerLink="/login"> Sair</span>
     </div>
 </div>

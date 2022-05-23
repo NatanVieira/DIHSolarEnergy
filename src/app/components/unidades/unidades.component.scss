@@ -1,9 +1,6 @@
 
-.table {
-    color:#009DFF; 
-}
 tr:hover {
-    background-color: #FF6200;;
+    background-color: #FF6200;
     color: white;
 }
 
@@ -18,4 +15,9 @@ thead > tr:hover {
 
 .row {
     margin-bottom: 2.5%;
+}
+
+.btn-primary {
+    background-color: #FF6200;
+    border-color: #FF6200;
 }

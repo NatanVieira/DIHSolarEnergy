@@ -1,0 +1,182 @@
+{
+    "usuarios": [
+        {
+            "id": "1",
+            "senha": "123456",
+            "email": "teste@email.com",
+            "user": "teste1"
+        },
+        {
+            "id": "2",
+            "senha": "123456",
+            "email": "teste2@email.com",
+            "user": "teste2"            
+        },
+        {
+            "id": "3",
+            "senha": "123456",
+            "email": "teste3@email.com",
+            "user": "teste3"
+        }
+    ],
+    "unidades": [
+        {
+            "id": "1",
+            "apelido": "unidade 1",
+            "marca": "marca X",
+            "modelo": "modelo X",
+            "status": true,
+            "idUsuario": "1"
+        },
+        {
+            "id": "2",
+            "apelido": "unidade 2",
+            "marca": "marca Y",
+            "modelo": "modelo Y",
+            "status": true,
+            "idUsuario": "1"
+        },
+        {
+            "id": "3",
+            "apelido": "unidade 3",
+            "marca": "marca X",
+            "modelo": "modelo X",
+            "status": true,
+            "idUsuario": "2"
+        },
+        {
+            "id": "4",
+            "apelido": "unidade 4",
+            "marca": "marca Y",
+            "modelo": "modelo Y",
+            "status": true,
+            "idUsuario": "2"
+        },
+        {
+            "id": "5",
+            "apelido": "unidade 5",
+            "marca": "marca X",
+            "modelo": "modelo X",
+            "status": true,
+            "idUsuario": "3"
+        },
+        {
+            "id": "6",
+            "apelido": "unidade 6",
+            "marca": "marca Y",
+            "modelo": "modelo Y",
+            "status": true,
+            "idUsuario": "3"
+        }
+    ],
+    "geracao":[
+        {
+            "id": "1",
+            "idUnidade": "1",
+            "data": "01/01/2022",
+            "mes": 1,
+            "ano": 2022,
+            "nomeMes": "janeiro",
+            "energiaGerada": 100
+        },
+        {
+            "id": "2",
+            "idUnidade": "1",
+            "data": "01/02/2022",
+            "mes": 2,
+            "ano": 2022,
+            "nomeMes": "fevereiro",
+            "energiaGerada": 120
+        },
+        {
+            "id": "3",
+            "idUnidade": "1",
+            "data": "01/03/2022",
+            "mes": 3,
+            "ano": 2022,
+            "nomeMes": "março",
+            "energiaGerada": 150
+        },
+        {
+            "id": "4",
+            "idUnidade": "1",
+            "data": "01/04/2022",
+            "mes": 4,
+            "ano": 2022,
+            "nomeMes": "abril",
+            "energiaGerada": 870
+        },
+        {
+            "id": "5",
+            "idUnidade": "1",
+            "data": "01/05/2022",
+            "mes": 5,
+            "ano": 2022,
+            "nomeMes": "maio",
+            "energiaGerada": 1000
+        },
+        {
+            "id": "6",
+            "idUnidade": "1",
+            "data": "01/06/2022",
+            "mes": 6,
+            "ano": 2022,
+            "nomeMes": "junho",
+            "energiaGerada": 100
+        },
+        {
+            "id": "7",
+            "idUnidade": "1",
+            "data": "01/07/2022",
+            "mes": 7,
+            "ano": 2022,
+            "nomeMes": "julho",
+            "energiaGerada": 3200
+        },
+        {
+            "id": "8",
+            "idUnidade": "1",
+            "data": "01/08/2022",
+            "mes": 8,
+            "ano": 2022,
+            "nomeMes": "agosto",
+            "energiaGerada": 80
+        },
+        {
+            "id": "9",
+            "idUnidade": "1",
+            "data": "01/09/2022",
+            "mes": 9,
+            "ano": 2022,
+            "nomeMes": "setembro",
+            "energiaGerada": 340
+        },
+        {
+            "id": "10",
+            "idUnidade": "1",
+            "data": "01/10/2022",
+            "mes": 10,
+            "ano": 2022,
+            "nomeMes": "outubro",
+            "energiaGerada": 500
+        },
+        {
+            "id": "11",
+            "idUnidade": "1",
+            "data": "01/11/2022",
+            "mes": 11,
+            "ano": 2022,
+            "nomeMes": "novembro",
+            "energiaGerada": 140
+        },
+        {
+            "id": "12",
+            "idUnidade": "1",
+            "data": "01/12/2022",
+            "mes": 12,
+            "ano": 2022,
+            "nomeMes": "dezembro",
+            "energiaGerada": 1200
+        }
+    ]
+}

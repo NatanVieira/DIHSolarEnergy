@@ -9,7 +9,8 @@
                 <div  [ngSwitch]="titulo" class="conteudo">
                     <div *ngSwitchCase="'Dashboard'"><dih-cdashboard></dih-cdashboard></div>
                     <div *ngSwitchCase="'Unidades'"><dih-unidades></dih-unidades></div>
-                    <div *ngSwitchCase="'Cadastro de consumo'"><dih-cadastro></dih-cadastro></div>
+                    <div *ngSwitchCase="'Cadastro de Geração'"><dih-geracao></dih-geracao></div>
+                    <div *ngSwitchCase="'Cadastro de Unidade'"><dih-cadastro></dih-cadastro></div>
                     <div *ngSwitchDefault><dih-cdashboard></dih-cdashboard></div>
                 </div>
             </div>

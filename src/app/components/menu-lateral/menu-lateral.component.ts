@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { faChartPie, faBookOpen, faGear } from '@fortawesome/free-solid-svg-icons';
+import { faChartPie, faBookOpen, faGear, faClose } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'dih-menu-lateral',
   templateUrl: './menu-lateral.component.html',
@@ -10,6 +10,7 @@ export class MenuLateralComponent implements OnInit {
   faChartPie = faChartPie;
   faBookOpen = faBookOpen;
   faGear = faGear;
+  faClose = faClose;
   constructor() { }
 
   ngOnInit(): void {

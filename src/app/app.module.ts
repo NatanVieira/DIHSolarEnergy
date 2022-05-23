@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -15,8 +16,37 @@ import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { CDashboardComponent } from './components/cdashboard/cdashboard.component';
 import { NgChartsModule } from 'ng2-charts';
 import { GraficoComponent } from './components/grafico/grafico.component';
+import { Route, RouterModule } from '@angular/router';
+import { CadastroGeracaoComponent } from './pages/cadastro-geracao/cadastro-geracao.component';
+import { GeracaoComponent } from './components/geracao/geracao.component';
+import { CadastroUnidadeComponent } from './pages/cadastro-unidade/cadastro-unidade.component';
 
-
+const ROTAS: Route[] = [
+  {
+    path: '',
+    component: DashboardComponent
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent
+  },
+  {
+    path: 'cadastro-geracao',
+    component: CadastroGeracaoComponent
+  },
+  {
+    path: 'unidades',
+    component: ListaUnidadesComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'cadastro-unidade',
+    component: CadastroUnidadeComponent
+  }
+]
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,13 +59,18 @@ import { GraficoComponent } from './components/grafico/grafico.component';
     UnidadesComponent,
     CadastroComponent,
     CDashboardComponent,
-    GraficoComponent
+    GraficoComponent,
+    CadastroGeracaoComponent,
+    GeracaoComponent,
+    CadastroUnidadeComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     FontAwesomeModule,
-    NgChartsModule
+    NgChartsModule,
+    RouterModule.forRoot(ROTAS)
   ],
   providers: [],
   bootstrap: [AppComponent]
