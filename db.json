@@ -23,6 +23,7 @@
         {
             "id": "1",
             "apelido": "unidade 1",
+            "local": "local X",
             "marca": "marca X",
             "modelo": "modelo X",
             "status": true,
@@ -31,14 +32,16 @@
         {
             "id": "2",
             "apelido": "unidade 2",
+            "local": "local Y",
             "marca": "marca Y",
             "modelo": "modelo Y",
-            "status": true,
+            "status": false,
             "idUsuario": "1"
         },
         {
             "id": "3",
             "apelido": "unidade 3",
+            "local": "local X",
             "marca": "marca X",
             "modelo": "modelo X",
             "status": true,
@@ -47,6 +50,7 @@
         {
             "id": "4",
             "apelido": "unidade 4",
+            "local": "local Y",
             "marca": "marca Y",
             "modelo": "modelo Y",
             "status": true,
@@ -55,6 +59,7 @@
         {
             "id": "5",
             "apelido": "unidade 5",
+            "local": "local X",
             "marca": "marca X",
             "modelo": "modelo X",
             "status": true,
@@ -63,6 +68,7 @@
         {
             "id": "6",
             "apelido": "unidade 6",
+            "local": "local Y",
             "marca": "marca Y",
             "modelo": "modelo Y",
             "status": true,

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Router } from '@angular/router';
 import { IUsuario } from 'src/app/models/iusuario.model';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'dih-login',
   templateUrl: './login.component.html',
@@ -27,8 +28,11 @@ export class LoginComponent implements OnInit {
   validaUsuario(){
     const indexUsuario = this.listaUsuarios.findIndex(usuario => usuario.email == this.email && usuario.senha == this.senha);
     console.log(indexUsuario);
-    if (indexUsuario != null && indexUsuario != -1)
+    if (indexUsuario != null && indexUsuario != -1){
+      environment.idUsuario = this.listaUsuarios[indexUsuario].id;
+      environment.userName  = this.listaUsuarios[indexUsuario].user;
       this.router.navigate(['/dashboard']);
+    }
     else
       this.usuarioValido = false;
   }

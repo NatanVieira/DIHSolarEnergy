@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { faChartPie, faBookOpen, faGear, faClose } from '@fortawesome/free-solid-svg-icons';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'dih-menu-lateral',
   templateUrl: './menu-lateral.component.html',
@@ -11,6 +12,8 @@ export class MenuLateralComponent implements OnInit {
   faBookOpen = faBookOpen;
   faGear = faGear;
   faClose = faClose;
+  userName = environment.userName;
+  
   constructor() { }
 
   ngOnInit(): void {

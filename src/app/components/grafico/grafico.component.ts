@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
+import { IGeracao } from 'src/app/models/igeracao.model';
 
 @Component({
   selector: 'dih-grafico',
@@ -8,6 +9,10 @@ import { BaseChartDirective } from 'ng2-charts';
   styleUrls: ['./grafico.component.scss']
 })
 export class GraficoComponent implements OnInit {
+  listaGeracao :      IGeracao[] = [];
+  listaEnergiaGerada: number[]   = [];
+  listaMeses:         string[]   = [];
+
   lineChartData: ChartConfiguration['data'] = {
     datasets: [
       {
@@ -41,7 +46,7 @@ export class GraficoComponent implements OnInit {
           text: '*Últimos 12 meses',
           align: 'end',
           display: true,
-          color: 'black', //
+          color: 'black',
           font: {
             family: 'KGBlankSpace'
           }

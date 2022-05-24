@@ -1,5 +1,8 @@
 <div class="d-flex flex-column">
     <img class="logo" src="../../../assets/img/logo.png" alt="logo" data-toggle="tooltip" data-placement="top" title="Home">
+    <div class="flex-row">
+        <span class="telaPequena">Olá! {{userName}}, seja bem vindo!!!</span>
+    </div>
     <div class="flex-row botao" data-toggle="tooltip" data-placement="top" title="Dashboard" [ngClass]="{'ativo': titulo === 'Dashboard'}">
         <span><fa-icon [icon]="faChartPie" routerLink="/dashboard"></fa-icon></span><span class="telaPequena" routerLink="/dashboard"> Dashboard</span>
     </div>
