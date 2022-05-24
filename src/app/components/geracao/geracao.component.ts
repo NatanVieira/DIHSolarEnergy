@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { IGeracao } from 'src/app/models/igeracao.model';
+import { IUnidade } from 'src/app/models/iunidade.model';
+import { GeracaoService } from 'src/app/services/geracao.service';
+import { UnidadeService } from 'src/app/services/unidade.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'dih-geracao',
@@ -6,14 +12,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./geracao.component.scss']
 })
 export class GeracaoComponent implements OnInit {
-  totalGeracao: number = 1;
-  data: string = '';
-  unidade: string = ''
-  unidades: string[] = ['unidade 1','unidade 2', 'unidade 3', 'unidade 4', 'unidade 5'];
-  
-  constructor() { }
+  listaUnidades: IUnidade[] = [];
+  idUsuario = environment.idUsuario;
+
+  geracao: IGeracao = {
+    id: '',
+    idUnidade: '',
+    energiaGerada: 0,
+    mes: 0,
+    ano: 0,
+    nomeMes: '',
+    data: ''
+  }
+  constructor(private unidadeService: UnidadeService, private geracaoService: GeracaoService, private router: Router) { }
 
   ngOnInit(): void {
+    this.unidadeService.devolveUnidadesAtivas(this.idUsuario).subscribe((unidades) => {
+      this.listaUnidades = unidades;
+    })
   }
 
+  cadastrarGeracao() {
+    this.geracaoService.cadastraGeracao(this.geracao).subscribe((res) => {
+      this.router.navigate(['/dashboard']);
+    })
+  }
 }

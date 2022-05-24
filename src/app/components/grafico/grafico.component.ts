@@ -2,7 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { IGeracao } from 'src/app/models/igeracao.model';
-
+import { GeracaoService } from 'src/app/services/geracao.service';
+import { UnidadeService } from 'src/app/services/unidade.service';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'dih-grafico',
   templateUrl: './grafico.component.html',
@@ -12,11 +14,18 @@ export class GraficoComponent implements OnInit {
   listaGeracao :      IGeracao[] = [];
   listaEnergiaGerada: number[]   = [];
   listaMeses:         string[]   = [];
+  idUsuario = environment.idUsuario;
+  
+  constructor(private geracaoService: GeracaoService, private unidadeService: UnidadeService) { }
+
+  ngOnInit(): void {
+    
+  }
 
   lineChartData: ChartConfiguration['data'] = {
     datasets: [
       {
-        data: [ 65, 59, 80, 81, 56, 55, 40, 55, 75, 90, 105, 15],
+        data: this.listaEnergiaGerada,
         label: 'Consumo (kW)',
         backgroundColor: '#EC6500',
         borderColor: '#EC6500',
@@ -24,7 +33,7 @@ export class GraficoComponent implements OnInit {
         pointHoverBackgroundColor: '#EC6500',
         pointHoverBorderColor: '#EC6500',
       }],
-      labels: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+      labels: this.listaMeses,
     }
   lineChartType: ChartType = 'line';
 
@@ -73,11 +82,5 @@ export class GraficoComponent implements OnInit {
       }
     }
   };
-
   @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

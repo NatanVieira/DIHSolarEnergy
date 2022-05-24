@@ -21,27 +21,24 @@ export class CDashboardComponent implements OnInit {
 
   constructor(private unidadeService: UnidadeService, private geracaoService: GeracaoService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {   
     this.unidadeService.devolveUnidades(this.idUsuario).subscribe((unidades: IUnidade[]) => {
-      this.listaUnidades = unidades;
-      console.log(this.listaUnidades);
-      this.totalUnidades    = this.listaUnidades.length;
-      this.unidadesAtivas   = this.listaUnidades.filter(unidade => unidade.status).length;
-      this.unidadesInativas = this.listaUnidades.filter(unidade => !unidade.status).length;
-      let listaAuxGeracao: IGeracao[] = [];
-      let somaGeracao: number = 0;
-      this.listaUnidades.forEach((unidade) => {
-        if(unidade.status){
-          this.geracaoService.devolveGeracoes(unidade.id).subscribe((geracoes: IGeracao[]) => {
-            this.listaGeracao = geracoes;
-            this.listaGeracao.forEach((geracao) => {
-              somaGeracao += geracao.energiaGerada;
-              this.mediaGeracao = somaGeracao / this.unidadesAtivas;
-            })
-          });
-        }
-      })
-    });
-  }
-
+    this.listaUnidades = unidades;
+    this.totalUnidades    = this.listaUnidades.length;
+    this.unidadesAtivas   = this.listaUnidades.filter(unidade => unidade.status).length;
+    this.unidadesInativas = this.listaUnidades.filter(unidade => !unidade.status).length;
+    let somaGeracao: number = 0;
+    this.listaUnidades.forEach((unidade) => {
+      if(unidade.status){
+        this.geracaoService.devolveGeracaoPorUnidade(unidade.id).subscribe((geracoes: IGeracao[]) => {
+          this.listaGeracao = geracoes;
+          this.listaGeracao.forEach((geracao) => {
+            somaGeracao += geracao.energiaGerada;
+            this.mediaGeracao = somaGeracao / this.unidadesAtivas;
+          })
+        });
+      }
+    })
+  });
+}
 }

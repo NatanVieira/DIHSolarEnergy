@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
 
   validaUsuario(){
     const indexUsuario = this.listaUsuarios.findIndex(usuario => usuario.email == this.email && usuario.senha == this.senha);
-    console.log(indexUsuario);
     if (indexUsuario != null && indexUsuario != -1){
       environment.idUsuario = this.listaUsuarios[indexUsuario].id;
       environment.userName  = this.listaUsuarios[indexUsuario].user;

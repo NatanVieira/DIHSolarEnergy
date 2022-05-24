@@ -22,10 +22,10 @@
                         <td>{{item.marca}}</td>
                         <td>{{item.modelo}}</td>
                         <td>
-                            <button class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Editar"><span><fa-icon [icon]="faPencil"></fa-icon></span></button>
+                            <button class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Editar" (click)="editarUnidade(item.id)"><span><fa-icon [icon]="faPencil"></fa-icon></span></button>
                         </td>
                         <td>
-                            <button class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Remover"><span><fa-icon [icon]="faRemove"></fa-icon></span></button>
+                            <button class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Remover" (click)="removerUnidade(item.id)"><span><fa-icon [icon]="faRemove"></fa-icon></span></button>
                         </td>
                     </tr>
                 </tbody>

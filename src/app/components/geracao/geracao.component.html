@@ -4,20 +4,19 @@
             <form #formGeracao="ngForm" (submit)="formGeracao.valid">
                 <div class="form-group">
                   <label>Selecione uma unidade</label>
-                  <select class="form-control" name="unidade" [(ngModel)]="unidade" >
-                    <option selected=selected>Selecione uma unidade</option>
-                    <option *ngFor="let unidade of unidades" value="unidade">{{unidade}}</option>
+                  <select class="form-control" name="unidade" [(ngModel)]="geracao.idUnidade">
+                    <option *ngFor="let unidade of listaUnidades" value="unidade.idUnidade">{{unidade.apelido}}</option>
                   </select>
                 </div>
                 <div class="form-group">
                     <label>Data</label>
-                    <input type="date" required="true" name="data" class="form-control" placeholder="Data" [(ngModel)]="data">
+                    <input type="date" required="true" name="data" class="form-control" placeholder="Data" [(ngModel)]="geracao.data">
                 </div>
                 <div class="form-group">
                     <label>Geração</label>
-                    <input type="number" min="1" max="99999999" required="true" name="geracao" class="form-control" placeholder="Geração" [(ngModel)]="totalGeracao">
+                    <input type="number" min="1" max="99999999" required="true" name="geracao" class="form-control" placeholder="Geração" [(ngModel)]="geracao.energiaGerada">
                 </div>
-                <button type="submit" class="btn btn-primary" [disabled]="!formGeracao.valid">Cadastrar</button>
+                <button type="submit" class="btn btn-primary" [disabled]="!formGeracao.valid" (click)="cadastrarGeracao()">Cadastrar</button>
               </form>
         </div>
     </div>

@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   idUsuario: '1',
   userName: 'teste1',
+  URL_BACK_END: 'http://localhost:3000/',
 };
 
 /*

@@ -1,64 +1,48 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { faPencil } from '@fortawesome/free-solid-svg-icons';
 import { faCancel } from '@fortawesome/free-solid-svg-icons';
 import { faRemove } from '@fortawesome/free-solid-svg-icons';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { IUnidade } from 'src/app/models/iunidade.model';
+import { UnidadeService } from 'src/app/services/unidade.service';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'dih-unidades',
   templateUrl: './unidades.component.html',
   styleUrls: ['./unidades.component.scss']
 })
 export class UnidadesComponent implements OnInit {
+
   faPencil = faPencil;
   faCancel = faCancel;
   faRemove = faRemove;
   faStar = faStar;
   
-  listaUnidades: any[] =  [
-    {id: 1,
-     apelido: 'Teste1',
-     local: 'Rua 1',
-     marca: 'Marca 1',
-     modelo: '1W'},
-    {id: 2,
-    apelido: 'Teste2',
-    local: 'Rua 2',
-    marca: 'Marca 2',
-    modelo: '2W'},
-    {id: 3,
-      apelido: 'Teste3',
-      local: 'Rua 3',
-      marca: 'Marca 3',
-      modelo: '3W'},
-    {id: 4,
-      apelido: 'Teste4',
-      local: 'Rua 4',
-      marca: 'Marca 4',
-      modelo: '4W'},
-    {id: 5,
-      apelido: 'Teste5',
-      local: 'Rua 5',
-      marca: 'Marca 5',
-      modelo: '5W'},
-    {id: 6,
-      apelido: 'Teste6',
-      local: 'Rua 6',
-      marca: 'Marca 6',
-      modelo: '6W'},
-    {id: 7,
-      apelido: 'Teste7',
-      local: 'Rua 7',
-      marca: 'Marca 7',
-      modelo: '7W'},
-    {id: 8,
-      apelido: 'Teste8',
-      local: 'Rua 8',
-      marca: 'Marca 8',
-      modelo: '8W'}, 
-  ];
-  constructor() { }
+  listaUnidades: IUnidade[] = [];
+
+  constructor(private unidadeService: UnidadeService, private router: Router) { }
 
   ngOnInit(): void {
+    this.unidadeService.devolveUnidadesAtivas(environment.idUsuario).subscribe((unidades: IUnidade[]) => {
+      this.listaUnidades = unidades;
+      this.unidadeService.unidadeEditavel = {};
+    })
+  }
+
+  removerUnidade(idUnidade: string) {
+    let unidadeGeradora: any;
+    unidadeGeradora = this.listaUnidades.find(unidade => unidade.id = idUnidade);
+    if(unidadeGeradora){
+      this.unidadeService.removerUnidade(unidadeGeradora).subscribe((res) => {
+        this.router.navigate(['/unidades']);
+      })
+    }
+  }
+
+  editarUnidade(idUnidade: string){
+    this.unidadeService.unidadeEditavel = this.listaUnidades.find(unidade => unidade.id == idUnidade);
+    this.router.navigate(['/cadastro-unidade']);
   }
 
 }
