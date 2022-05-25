@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class GeracaoService {
-  cEntidade: string = environment.URL_BACK_END + 'geracao';
+  cEntidade: string = environment.URL_API_REST + 'geracao';
 
   constructor(private http: HttpClient) { }
 
@@ -26,6 +26,10 @@ export class GeracaoService {
     geracao.mes = Number(geracao.data.substring(5,7));
     geracao.nomeMes = this.descobreNomeMes(geracao.mes);
     return this.http.post<IGeracao>(this.cEntidade,geracao);
+  }
+
+  removerGeracao(idUnidade: string): Observable<unknown> {
+    return this.http.delete<IGeracao>(this.cEntidade + "?idUnidade=" + idUnidade);
   }
 
   retornaIDGeracao(): string {

@@ -5,7 +5,7 @@
                 <div class="form-group">
                   <label>Selecione uma unidade</label>
                   <select class="form-control" name="unidade" [(ngModel)]="geracao.idUnidade">
-                    <option *ngFor="let unidade of listaUnidades" value="unidade.idUnidade">{{unidade.apelido}}</option>
+                    <option *ngFor="let unidade of listaUnidades" [value]="unidade.id">{{unidade.apelido}}</option>
                   </select>
                 </div>
                 <div class="form-group">

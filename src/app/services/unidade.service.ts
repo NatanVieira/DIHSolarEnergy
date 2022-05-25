@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IUnidade } from '../models/iunidade.model';
 import { environment } from 'src/environments/environment';
+import { GeracaoService } from './geracao.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UnidadeService {
-  cEntidade: string = environment.URL_BACK_END + 'unidades';
+  cEntidade: string = environment.URL_API_REST + 'unidades';
 
   unidadeEditavel: any;
   constructor(private http: HttpClient) { }
@@ -34,7 +35,7 @@ export class UnidadeService {
     return String(Math.round((Math.random() * (9999999999 - 1)) + 1));
   }
 
-  removerUnidade(unidade: IUnidade): Observable<unknown> {
-    return this.http.delete<IUnidade>(this.cEntidade + "/" + unidade.id);
+  removerUnidade(idUnidade: string): Observable<unknown> {
+    return this.http.delete<IUnidade>(this.cEntidade + "/" + idUnidade);
   }
 }

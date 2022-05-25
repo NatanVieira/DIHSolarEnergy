@@ -13,7 +13,6 @@ import { environment } from 'src/environments/environment';
 })
 export class GeracaoComponent implements OnInit {
   listaUnidades: IUnidade[] = [];
-  idUsuario = environment.idUsuario;
 
   geracao: IGeracao = {
     id: '',
@@ -27,7 +26,7 @@ export class GeracaoComponent implements OnInit {
   constructor(private unidadeService: UnidadeService, private geracaoService: GeracaoService, private router: Router) { }
 
   ngOnInit(): void {
-    this.unidadeService.devolveUnidadesAtivas(this.idUsuario).subscribe((unidades) => {
+    this.unidadeService.devolveUnidadesAtivas(environment.idUsuario).subscribe((unidades) => {
       this.listaUnidades = unidades;
     })
   }

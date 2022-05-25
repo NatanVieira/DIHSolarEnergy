@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class UsuarioService {
-  cEntidade: string = environment.URL_BACK_END + 'usuarios';
+  cEntidade: string = environment.URL_API_REST + 'usuarios';
   constructor(private http: HttpClient) { }
 
   devolveUsuarios(): Observable<IUsuario[]>{

@@ -19,4 +19,10 @@ export class MenuLateralComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  logout(){
+    environment.idUsuario = '';
+    environment.userName = '';
+    environment.userLogado = false;
+  }
+
 }

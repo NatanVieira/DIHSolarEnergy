@@ -3,5 +3,4 @@ export interface IUsuario {
     senha: string;
     email: string;
     user: string;
-
 }

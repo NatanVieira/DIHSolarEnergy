@@ -6,7 +6,11 @@ export const environment = {
   production: false,
   idUsuario: '1',
   userName: 'teste1',
-  URL_BACK_END: 'http://localhost:3000/',
+  URL_API_REST: 'http://localhost:3000/',
+  userLogado: true,
+  fonteFam: 'Mustica',
+  bgColor: '#EC6500',
+  fgColor: 'black',
 };
 
 /*

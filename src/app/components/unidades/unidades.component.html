@@ -15,17 +15,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of listaUnidades">
-                        <td>{{item.id}}</td>
-                        <td>{{item.apelido}}</td>
-                        <td>{{item.local}}</td>
-                        <td>{{item.marca}}</td>
-                        <td>{{item.modelo}}</td>
+                    <tr *ngFor="let unidade of listaUnidades">
+                        <td>{{unidade.id}}</td>
+                        <td>{{unidade.apelido}}</td>
+                        <td>{{unidade.local}}</td>
+                        <td>{{unidade.marca}}</td>
+                        <td>{{unidade.modelo}}</td>
                         <td>
-                            <button class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Editar" (click)="editarUnidade(item.id)"><span><fa-icon [icon]="faPencil"></fa-icon></span></button>
+                            <button class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Editar" (click)="editarUnidade(unidade.id)"><span><fa-icon [icon]="faPencil"></fa-icon></span></button>
                         </td>
                         <td>
-                            <button class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Remover" (click)="removerUnidade(item.id)"><span><fa-icon [icon]="faRemove"></fa-icon></span></button>
+                            <button class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Remover" (click)="removerUnidade(unidade.id)"><span><fa-icon [icon]="faRemove"></fa-icon></span></button>
                         </td>
                     </tr>
                 </tbody>

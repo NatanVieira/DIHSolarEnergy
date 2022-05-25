@@ -13,12 +13,6 @@ export class LoginComponent implements OnInit {
   senha: string = '';
   usuarioValido: boolean = true;
   listaUsuarios: IUsuario[] = [];
-  usuario : IUsuario = {
-    id: '',
-    senha: '',
-    user: '',
-    email: ''
-  }
   constructor(private usuarioService: UsuarioService, private router: Router) { }
 
   ngOnInit(): void {
@@ -30,6 +24,7 @@ export class LoginComponent implements OnInit {
     if (indexUsuario != null && indexUsuario != -1){
       environment.idUsuario = this.listaUsuarios[indexUsuario].id;
       environment.userName  = this.listaUsuarios[indexUsuario].user;
+      environment.userLogado = true;
       this.router.navigate(['/dashboard']);
     }
     else

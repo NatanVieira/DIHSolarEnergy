@@ -13,7 +13,6 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./unidades.component.scss']
 })
 export class UnidadesComponent implements OnInit {
-
   faPencil = faPencil;
   faCancel = faCancel;
   faRemove = faRemove;
@@ -34,7 +33,7 @@ export class UnidadesComponent implements OnInit {
     let unidadeGeradora: any;
     unidadeGeradora = this.listaUnidades.find(unidade => unidade.id = idUnidade);
     if(unidadeGeradora){
-      this.unidadeService.removerUnidade(unidadeGeradora).subscribe((res) => {
+      this.unidadeService.removerUnidade(unidadeGeradora.id).subscribe((res) => {
         this.router.navigate(['/unidades']);
       })
     }

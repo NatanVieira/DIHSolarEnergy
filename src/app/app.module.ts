@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -24,19 +25,19 @@ import { CadastroUnidadeComponent } from './pages/cadastro-unidade/cadastro-unid
 const ROTAS: Route[] = [
   {
     path: '',
-    component: DashboardComponent
+    component: LoginComponent
   },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: environment.userLogado ? DashboardComponent : LoginComponent
   },
   {
     path: 'cadastro-geracao',
-    component: CadastroGeracaoComponent
+    component: environment.userLogado ? CadastroGeracaoComponent : LoginComponent
   },
   {
     path: 'unidades',
-    component: ListaUnidadesComponent
+    component: environment.userLogado ? ListaUnidadesComponent : LoginComponent
   },
   {
     path: 'login',
@@ -44,7 +45,7 @@ const ROTAS: Route[] = [
   },
   {
     path: 'cadastro-unidade',
-    component: CadastroUnidadeComponent
+    component: environment.userLogado ? CadastroUnidadeComponent : LoginComponent
   }
 ]
 @NgModule({
