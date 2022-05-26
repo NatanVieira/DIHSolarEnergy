@@ -18,6 +18,7 @@ export class UnidadesComponent implements OnInit {
   faRemove = faRemove;
   faStar   = faStar;
   
+  mostraAlerta: number = 0;
   listaUnidades: IUnidade[] = [];
 
   constructor(private unidadeService: UnidadeService, private router: Router) { }
@@ -26,6 +27,8 @@ export class UnidadesComponent implements OnInit {
     this.unidadeService.devolveUnidadesAtivas(environment.idUsuario).subscribe((unidades: IUnidade[]) => {
       this.listaUnidades = unidades;
       this.unidadeService.unidadeEditavel = {};
+      this.mostraAlerta = environment.cadastroAtulizacao;
+      setTimeout(function() {environment.cadastroAtulizacao = 0});
     })
   }
 

@@ -15,9 +15,13 @@ export class CDashboardComponent implements OnInit {
   unidadesInativas: number = 0;
   mediaGeracao:     number = 0;
 
+  mostraAlerta: number = 0;
+
   constructor(private unidadeService: UnidadeService, private geracaoService: GeracaoService) { }
 
   ngOnInit(): void {   
+    this.mostraAlerta = environment.cadastroAtulizacao;
+    setTimeout(function() {environment.cadastroAtulizacao = 0}, 3000);
     this.unidadeService.devolveUnidades(environment.idUsuario).subscribe((unidades: IUnidade[]) => {
     this.totalUnidades    = unidades.length;
     this.unidadesAtivas   = unidades.filter(unidade => unidade.status).length;

@@ -11,6 +11,7 @@ export const environment = {
   fonteFam: 'Mustica',
   bgColor: '#EC6500',
   fgColor: 'black',
+  cadastroAtulizacao: 0, /*0 Nao faz nada, 1 sucesso, 2 erro */
 };
 
 /*

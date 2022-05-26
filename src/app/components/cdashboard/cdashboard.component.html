@@ -1,4 +1,12 @@
 <div class="container-fluid">
+    <div class="alerta alert alert-success alert-dismissible" data-toggle="alert" role="alert" *ngIf="mostraAlerta === 1">
+        Geração cadastrada com sucesso!!!
+        <span class="close" data-bs-dismiss="alert" data-dismiss="alert" aria-label="Close">X</span>
+    </div>
+    <div class="alerta alert alert-danger alert-dismissible" data-toggle="alert" role="alert" *ngIf="mostraAlerta === 2">
+        Geração não cadastrada!
+        <span class="close" data-bs-dismiss="alert" data-dismiss="alert" aria-label="Close">X</span>
+    </div>
     <div class="row">
         <div class="col">
             <div class="card" style="width: 18rem;">

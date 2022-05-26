@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { timeout } from 'rxjs';
 import { IUnidade } from 'src/app/models/iunidade.model';
 import { UnidadeService } from 'src/app/services/unidade.service';
 import { environment } from 'src/environments/environment';
@@ -29,16 +30,20 @@ export class CadastroComponent implements OnInit {
   atualizarUnidade(){
     if(this.unidadeGeradora.id !== undefined){
       this.unidadeService.atualizaUnidade(this.unidadeGeradora).subscribe((unidade) => {
-        this.unidadeService.unidadeEditavel = {};
-        this.router.navigate(['/unidades']);
+        this.atualizaPagina(1);
       });
     }
     else{
       this.unidadeGeradora.idUsuario = environment.idUsuario;
       this.unidadeService.cadastraUnidade(this.unidadeGeradora).subscribe((unidade) => {
-        this.router.navigate(['/unidades']);
+        this.atualizaPagina(1);
       });
     }
+  }
+
+  private atualizaPagina(opcao: number): void {
+    environment.cadastroAtulizacao = opcao;
+    this.router.navigate(['/unidades']);
   }
 
 }
