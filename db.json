@@ -129,15 +129,6 @@
       "id": "8315013851"
     },
     {
-      "apelido": "ASAS",
-      "local": "ASAS",
-      "marca": "ASAS",
-      "modelo": "ASAS",
-      "status": true,
-      "idUsuario": "1",
-      "id": "3894416609"
-    },
-    {
       "apelido": "asasasassdbs",
       "local": "asasasassdbs",
       "marca": "asasasassdbs",
@@ -156,15 +147,6 @@
       "id": "1228642022"
     },
     {
-      "apelido": "rsfgnsgnasf",
-      "local": "rsfgnsgnasf",
-      "marca": "rsfgnsgnasf",
-      "modelo": "rsfgnsgnasf",
-      "status": true,
-      "idUsuario": "1",
-      "id": "6866564063"
-    },
-    {
       "apelido": "asas",
       "local": "dwthdfn",
       "marca": "fhthmcvb QD",
@@ -172,15 +154,6 @@
       "status": true,
       "idUsuario": "1",
       "id": "5197509816"
-    },
-    {
-      "apelido": "asabfdfg",
-      "local": "asabfdfg",
-      "marca": "asabfdfg",
-      "modelo": "asabfdfg",
-      "status": true,
-      "idUsuario": "1",
-      "id": "5635468790"
     },
     {
       "apelido": "sauisausnampskani b",
@@ -208,15 +181,6 @@
       "status": true,
       "idUsuario": "1",
       "id": "7741502371"
-    },
-    {
-      "apelido": "adsvd",
-      "local": "aafdbsfv",
-      "marca": "fdadbdQS",
-      "modelo": "ADFVB ",
-      "status": true,
-      "idUsuario": "1",
-      "id": "4799822094"
     },
     {
       "apelido": "assdvb",
@@ -453,6 +417,15 @@
       "ano": 2022,
       "nomeMes": "Mai",
       "data": "2022-05-31"
+    },
+    {
+      "id": "9062759117",
+      "idUnidade": "6075630769",
+      "energiaGerada": 15,
+      "mes": 5,
+      "ano": 2022,
+      "nomeMes": "Mai",
+      "data": "2022-05-10"
     }
   ]
 }

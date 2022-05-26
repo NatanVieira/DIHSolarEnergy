@@ -43,7 +43,8 @@ export class UnidadesComponent implements OnInit {
     if(unidadeGeradora){
       this.unidadeService.removerUnidade(unidadeGeradora.id).subscribe((res) => {
         location.reload();
-      })
+      },
+      (error?) => {console.log("Erro")})
     }
   }
 

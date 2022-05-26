@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, tap, throwError } from 'rxjs';
 import { IUnidade } from '../models/iunidade.model';
 import { environment } from 'src/environments/environment';
 
@@ -37,4 +37,5 @@ export class UnidadeService {
   private geraIDUnidade(): string {
     return String(Math.round((Math.random() * (9999999999 - 1)) + 1));
   }
+
 }

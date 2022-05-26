@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, tap, throwError } from 'rxjs';
 import { IGeracao } from '../models/igeracao.model';
 import { environment } from 'src/environments/environment';
 
@@ -13,7 +13,7 @@ export class GeracaoService {
   constructor(private http: HttpClient) { }
 
   public devolveGeracaoPorUnidade (idUnidade: string): Observable<IGeracao[]> {
-    return this.http.get<IGeracao[]>(this.cEntidade + '?idUnidade=' + idUnidade )
+    return this.http.get<IGeracao[]>(this.cEntidade + '?idUnidade=' + idUnidade);
   }
 
   public devolveGeracoes () : Observable<IGeracao[]> {
@@ -66,4 +66,5 @@ export class GeracaoService {
         return 'Jan';
     }
   }
+
 }
