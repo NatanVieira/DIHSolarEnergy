@@ -1,4 +1,12 @@
 <div class="container-fluid">
+    <div class="alerta alert alert-danger alert-dismissible" data-toggle="alert" role="alert" *ngIf="mostraAlerta === 2">
+      Não foi possível carregar os dados das unidades! Por favor recarregue a página.
+      <span class="close" data-bs-dismiss="alert" data-dismiss="alert" aria-label="Close">X</span>
+    </div>
+    <div class="alerta alert alert-danger alert-dismissible" data-toggle="alert" role="alert" *ngIf="mostraAlerta === 3">
+      Não foi possível cadastrar, favor tentar mais tarde.
+      <span class="close" data-bs-dismiss="alert" data-dismiss="alert" aria-label="Close">X</span>
+    </div>
     <div class="row">
         <div class="col">
             <form #formGeracao="ngForm" (submit)="formGeracao.valid">

@@ -4,7 +4,15 @@
         <span class="close" data-bs-dismiss="alert" data-dismiss="alert" aria-label="Close">X</span>
     </div>
     <div class="alerta alert alert-danger alert-dismissible" data-toggle="alert" role="alert" *ngIf="mostraAlerta === 2">
-        Unidade não cadastrada / atualizada!!!
+        Falha ao cadastrar / atualizar unidade!!!
+        <span class="close" data-bs-dismiss="alert" data-dismiss="alert" aria-label="Close">X</span>
+    </div>
+    <div class="alerta alert alert-success alert-dismissible" data-toggle="alert" role="alert" *ngIf="mostraAlerta === 3">
+        Unidade removida com sucesso!!!
+        <span class="close" data-bs-dismiss="alert" data-dismiss="alert" aria-label="Close">X</span>
+    </div>
+    <div class="alerta alert alert-danger alert-dismissible" data-toggle="alert" role="alert" *ngIf="mostraAlerta === 4">
+        Falha ao remover unidade!!!
         <span class="close" data-bs-dismiss="alert" data-dismiss="alert" aria-label="Close">X</span>
     </div>
     <div class="row">

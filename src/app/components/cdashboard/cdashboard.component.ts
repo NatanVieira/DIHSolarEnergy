@@ -20,18 +20,24 @@ export class CDashboardComponent implements OnInit {
   constructor(private unidadeService: UnidadeService, private geracaoService: GeracaoService) { }
 
   ngOnInit(): void {   
-    this.mostraAlerta = environment.cadastroAtulizacao;
-    setTimeout(function() {environment.cadastroAtulizacao = 0}, 3000);
+    this.mostraAlerta = environment.cadastroAtualizacao;
+    setTimeout(function() {environment.cadastroAtualizacao = 0}, 3000);
     this.unidadeService.devolveUnidades(environment.idUsuario).subscribe((unidades: IUnidade[]) => {
-    this.totalUnidades    = unidades.length;
-    this.unidadesAtivas   = unidades.filter(unidade => unidade.status).length;
-    this.unidadesInativas = unidades.filter(unidade => !unidade.status).length;
-    this.unidadeService.devolveUnidadesAtivas(environment.idUsuario).subscribe((unidades: IUnidade[]) => {
-      this.geracaoService.devolveGeracoes().subscribe((geracoes: IGeracao[]) => {
-        this.mediaGeracao = this.calculaMediaGeracao(geracoes, unidades);
-        })
-      })
-    });
+      this.totalUnidades    = unidades.length;
+      this.unidadesAtivas   = unidades.filter(unidade => unidade.status).length;
+      this.unidadesInativas = unidades.filter(unidade => !unidade.status).length;
+      this.unidadeService.devolveUnidadesAtivas(environment.idUsuario).subscribe((unidades: IUnidade[]) => {
+        this.geracaoService.devolveGeracoes().subscribe((geracoes: IGeracao[]) => {
+          this.mediaGeracao = this.calculaMediaGeracao(geracoes, unidades);
+        },
+        (error?) => {environment.cadastroAtualizacao = 2,
+                     this.ngOnInit()})
+      },
+      (error?) => {environment.cadastroAtualizacao = 2,
+                   this.ngOnInit()})
+    },
+    (error?) => {environment.cadastroAtualizacao = 2;
+                 this.ngOnInit()});
   }
 
   private calculaMediaGeracao(geracoes: IGeracao[], unidades: IUnidade[]): number {

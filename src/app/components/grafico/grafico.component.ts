@@ -14,11 +14,13 @@ import { environment } from 'src/environments/environment';
 export class GraficoComponent implements OnInit {
   listaEnergiaGerada: number[]   = [];
   listaMeses:         string[]   = [];
+  mostraAlerta: number = 0;
 
   private mesInicial: number = 0;
   private mesFinal: number = 0;
   private anoInicial: number = 0;
   private anoFinal: number = 0;
+
 
   lineChartData: ChartConfiguration['data'] = {
     datasets: [
@@ -86,6 +88,8 @@ export class GraficoComponent implements OnInit {
   constructor(private geracaoService: GeracaoService, private unidadeService: UnidadeService) { }
 
   ngOnInit(): void {
+    this.mostraAlerta = environment.cadastroAtualizacao;
+    setTimeout (function() {environment.cadastroAtualizacao = 0}, 3000)
     this.unidadeService.devolveUnidadesAtivas(environment.idUsuario).subscribe((unidades: IUnidade[]) => {
       this.geracaoService.devolveGeracoes().subscribe((geracoes: IGeracao[]) => {
         let listaGeracaoUnidades: IGeracao[] = []
@@ -93,8 +97,12 @@ export class GraficoComponent implements OnInit {
           listaGeracaoUnidades.push(...geracoes.filter(geracao => geracao.idUnidade == unidade.id));
         })
         this.atualizaListasDeEnergiaEMeses(listaGeracaoUnidades);
-      })
-    })
+      },
+      (error?) => {environment.cadastroAtualizacao = 2;
+                   this.ngOnInit();})
+    },
+    (error?) => {environment.cadastroAtualizacao = 2;
+                 this.ngOnInit();})
   }
 
   private atualizaListasDeEnergiaEMeses(listaGeracaoUnidades: IGeracao[]): void{

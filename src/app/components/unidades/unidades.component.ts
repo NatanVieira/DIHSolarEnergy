@@ -27,9 +27,11 @@ export class UnidadesComponent implements OnInit {
     this.unidadeService.devolveUnidadesAtivas(environment.idUsuario).subscribe((unidades: IUnidade[]) => {
       this.listaUnidades = unidades;
       this.unidadeService.unidadeEditavel = {};
-      this.mostraAlerta = environment.cadastroAtulizacao;
-      setTimeout(function() {environment.cadastroAtulizacao = 0});
-    })
+      this.mostraAlerta = environment.cadastroAtualizacao;
+      setTimeout(function() {environment.cadastroAtualizacao = 0});
+    },
+    (error?) => {environment.cadastroAtualizacao = 2;
+                 this.ngOnInit();})
   }
 
   public editarUnidade(idUnidade: string){
@@ -42,9 +44,11 @@ export class UnidadesComponent implements OnInit {
     unidadeGeradora = this.listaUnidades.find(unidade => unidade.id == idUnidade);
     if(unidadeGeradora){
       this.unidadeService.removerUnidade(unidadeGeradora.id).subscribe((res) => {
-        location.reload();
+        environment.cadastroAtualizacao = 3
+        this.ngOnInit();
       },
-      (error?) => {console.log("Erro")})
+      (error?) => {environment.cadastroAtualizacao = 4;
+                   this.ngOnInit()})
     }
   }
 

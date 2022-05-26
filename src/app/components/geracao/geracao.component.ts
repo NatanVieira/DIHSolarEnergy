@@ -13,6 +13,7 @@ import { environment } from 'src/environments/environment';
 })
 export class GeracaoComponent implements OnInit {
   listaUnidades: IUnidade[] = [];
+  mostraAlerta: number = 0;
 
   geracao: IGeracao = {
     id: '',
@@ -26,15 +27,20 @@ export class GeracaoComponent implements OnInit {
   constructor(private unidadeService: UnidadeService, private geracaoService: GeracaoService, private router: Router) { }
 
   ngOnInit(): void {
+    this.mostraAlerta = environment.cadastroAtualizacao;
+    setTimeout (function() {environment.cadastroAtualizacao = 0}, 3000);
     this.unidadeService.devolveUnidadesAtivas(environment.idUsuario).subscribe((unidades) => {
       this.listaUnidades = unidades;
-    })
+    },
+    (error?) => {environment.cadastroAtualizacao = 3;
+                 this.ngOnInit();})
   }
 
   public cadastrarGeracao() {
     this.geracaoService.cadastraGeracao(this.geracao).subscribe((res) => {
-      environment.cadastroAtulizacao = 1;
+      environment.cadastroAtualizacao = 1;
       this.router.navigate(['/dashboard']);
-    },(error?) => {environment.cadastroAtulizacao = 2});
+    },(error?) => {environment.cadastroAtualizacao = 2;
+                   this.ngOnInit()});
   }
 }
