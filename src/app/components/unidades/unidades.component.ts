@@ -31,9 +31,10 @@ export class UnidadesComponent implements OnInit {
 
   removerUnidade(idUnidade: string) {
     let unidadeGeradora: any;
-    unidadeGeradora = this.listaUnidades.find(unidade => unidade.id = idUnidade);
+    unidadeGeradora = this.listaUnidades.find(unidade => unidade.id == idUnidade);
     if(unidadeGeradora){
       this.unidadeService.removerUnidade(unidadeGeradora.id).subscribe((res) => {
+        location.reload();
         this.router.navigate(['/unidades']);
       })
     }

@@ -73,6 +73,15 @@
       "status": false,
       "idUsuario": "1",
       "id": "58378930"
+    },
+    {
+      "apelido": "teste 49",
+      "local": "teste 49",
+      "marca": "teste 49",
+      "modelo": "teste 49",
+      "status": true,
+      "idUsuario": "1",
+      "id": "2683045511"
     }
   ],
   "geracao": [
@@ -246,6 +255,15 @@
       "ano": 2021,
       "nomeMes": "Dez",
       "data": "2021-12-15"
+    },
+    {
+      "id": "8125972517",
+      "idUnidade": "7846795381",
+      "energiaGerada": 1580,
+      "mes": 5,
+      "ano": 2022,
+      "nomeMes": "Mai",
+      "data": "2022-05-19"
     }
   ]
 }

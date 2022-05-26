@@ -11,7 +11,6 @@ import { MenuLateralComponent } from './components/menu-lateral/menu-lateral.com
 import { PaginaPadraoComponent } from './components/pagina-padrao/pagina-padrao.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ListaUnidadesComponent } from './pages/lista-unidades/lista-unidades.component';
-import { CadastroConsumoComponent } from './pages/cadastro-consumo/cadastro-consumo.component';
 import { UnidadesComponent } from './components/unidades/unidades.component';
 import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { CDashboardComponent } from './components/cdashboard/cdashboard.component';
@@ -56,7 +55,6 @@ const ROTAS: Route[] = [
     MenuLateralComponent,
     PaginaPadraoComponent,
     ListaUnidadesComponent,
-    CadastroConsumoComponent,
     UnidadesComponent,
     CadastroComponent,
     CDashboardComponent,
