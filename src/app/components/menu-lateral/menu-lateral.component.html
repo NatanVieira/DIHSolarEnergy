@@ -13,6 +13,6 @@
         <span><fa-icon [icon]="faGear" routerLink="/cadastro-geracao"></fa-icon></span><span class="telaPequena" routerLink="/cadastro-geracao"> Cadastro de Geração</span>
     </div>
     <div class="flex-row botao" data-toggle="tooltip" data-placement="top" title="Sair">
-        <span><fa-icon [icon]="faClose" routerLink="/login"></fa-icon></span><span class="telaPequena" routerLink="/login"> Sair</span>
+        <span><fa-icon [icon]="faClose" routerLink="/login"></fa-icon></span><span class="telaPequena" (click)="logout()"> Sair</span>
     </div>
 </div>

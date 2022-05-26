@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./cadastro.component.scss']
 })
 export class CadastroComponent implements OnInit {
-  @Input() unidadeGeradora: IUnidade = {
+  unidadeGeradora: IUnidade = {
     id: '',
     idUsuario: environment.idUsuario,
     apelido: '',

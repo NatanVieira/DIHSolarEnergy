@@ -31,7 +31,7 @@ export class GeracaoComponent implements OnInit {
     })
   }
 
-  cadastrarGeracao() {
+  public cadastrarGeracao() {
     this.geracaoService.cadastraGeracao(this.geracao).subscribe((res) => {
       this.router.navigate(['/dashboard']);
     })

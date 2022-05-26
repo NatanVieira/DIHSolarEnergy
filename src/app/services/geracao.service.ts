@@ -8,19 +8,19 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class GeracaoService {
-  cEntidade: string = environment.URL_API_REST + 'geracao';
+  private cEntidade: string = environment.URL_API_REST + 'geracao';
 
   constructor(private http: HttpClient) { }
 
-  devolveGeracaoPorUnidade (idUnidade: string): Observable<IGeracao[]> {
+  public devolveGeracaoPorUnidade (idUnidade: string): Observable<IGeracao[]> {
     return this.http.get<IGeracao[]>(this.cEntidade + '?idUnidade=' + idUnidade )
   }
 
-  devolveGeracoes () : Observable<IGeracao[]> {
+  public devolveGeracoes () : Observable<IGeracao[]> {
     return this.http.get<IGeracao[]>(this.cEntidade);
   }
 
-  cadastraGeracao(geracao: IGeracao): Observable<IGeracao> {
+  public cadastraGeracao(geracao: IGeracao): Observable<IGeracao> {
     geracao.id = this.retornaIDGeracao();
     geracao.ano = Number(geracao.data.substring(0,4));
     geracao.mes = Number(geracao.data.substring(5,7));
@@ -28,15 +28,15 @@ export class GeracaoService {
     return this.http.post<IGeracao>(this.cEntidade,geracao);
   }
 
-  removerGeracao(idUnidade: string): Observable<unknown> {
+  public removerGeracao(idUnidade: string): Observable<unknown> {
     return this.http.delete<IGeracao>(this.cEntidade + "?idUnidade=" + idUnidade);
   }
 
-  retornaIDGeracao(): string {
+  private retornaIDGeracao(): string {
     return String(Math.round((Math.random() * (9999999999 - 1)) + 1));
   }
 
-  descobreNomeMes(mes: number): string {
+  private descobreNomeMes(mes: number): string {
     switch(mes){
       case 1:
         return 'Jan';

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { faChartPie, faBookOpen, faGear, faClose } from '@fortawesome/free-solid-svg-icons';
 import { environment } from 'src/environments/environment';
 @Component({
@@ -14,15 +15,16 @@ export class MenuLateralComponent implements OnInit {
   faClose = faClose;
   userName = environment.userName;
   
-  constructor() { }
+  constructor(private route: Router) { }
 
   ngOnInit(): void {
   }
 
-  logout(){
+  public logout(){
     environment.idUsuario = '';
     environment.userName = '';
     environment.userLogado = false;
+    this.route.navigate(['/login']);
   }
 
 }

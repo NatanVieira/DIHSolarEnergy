@@ -12,10 +12,8 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./grafico.component.scss']
 })
 export class GraficoComponent implements OnInit {
-  listaGeracao :      IGeracao[] = [];
   listaEnergiaGerada: number[]   = [];
   listaMeses:         string[]   = [];
-  listaUnidades:      IUnidade[] = [];
 
   private mesInicial: number = 0;
   private mesFinal: number = 0;
@@ -25,7 +23,7 @@ export class GraficoComponent implements OnInit {
   lineChartData: ChartConfiguration['data'] = {
     datasets: [
       {
-        data: [], //this.listaGeracao
+        data: [],
         label: 'Consumo (kW)',
         backgroundColor: environment.bgColor,
         borderColor: environment.bgColor,
@@ -33,7 +31,7 @@ export class GraficoComponent implements OnInit {
         pointHoverBackgroundColor: environment.bgColor,
         pointHoverBorderColor: environment.bgColor,
       }],
-      labels: [], //this.listaMeses
+      labels: [],
     }
   lineChartType: ChartType = 'line';
 
@@ -90,23 +88,32 @@ export class GraficoComponent implements OnInit {
   ngOnInit(): void {
     this.unidadeService.devolveUnidadesAtivas(environment.idUsuario).subscribe((unidades: IUnidade[]) => {
       this.geracaoService.devolveGeracoes().subscribe((geracoes: IGeracao[]) => {
+        let listaGeracaoUnidades: IGeracao[] = []
         unidades.forEach((unidade) => {
-          this.listaGeracao.push(...geracoes.filter(geracao => geracao.idUnidade == unidade.id));
+          listaGeracaoUnidades.push(...geracoes.filter(geracao => geracao.idUnidade == unidade.id));
         })
-        this.atribuiDatasBusca();
-        this.populaArrays();
-        this.ajustaArrays();
-        this.lineChartData.datasets[0].data = this.listaEnergiaGerada;
-        this.lineChartData.labels = this.listaMeses;
-        this.chart?.update();
+        this.atualizaListasDeEnergiaEMeses(listaGeracaoUnidades);
       })
     })
   }
 
-  private populaArrays(): void{
+  private atualizaListasDeEnergiaEMeses(listaGeracaoUnidades: IGeracao[]): void{
+    this.defineDatasDeBusca();
+    this.populaListasDeEnergiaEMeses(listaGeracaoUnidades);
+    this.ajustaListasDeEnergiaEMeses();
+    this.atualizaDadosGrafico();
+  }
+
+  private atualizaDadosGrafico(): void {
+    this.lineChartData.datasets[0].data = this.listaEnergiaGerada;
+    this.lineChartData.labels = this.listaMeses;
+    this.chart?.update();
+  }
+  
+  private populaListasDeEnergiaEMeses(listaGeracaoUnidades: IGeracao[]): void{
     let arrAuxGeracao: number[] = [0,0,0,0,0,0,0,0,0,0,0,0,0];
     let arrAuxMeses: string[] = ['','','','','','','','','','','',''];
-    this.listaGeracao.forEach((geracao) => {
+    listaGeracaoUnidades.forEach((geracao) => {
       if((geracao.mes <= this.mesFinal && geracao.ano == this.anoFinal) || (geracao.mes >= this.mesInicial && geracao.ano == this.anoInicial)){
         let indexArr: number = this.descobreIndexArr(geracao.mes, geracao.ano);
         arrAuxGeracao[indexArr] = arrAuxGeracao[indexArr] + Number(geracao.energiaGerada);
@@ -117,7 +124,7 @@ export class GraficoComponent implements OnInit {
     this.listaMeses = arrAuxMeses;
   }
 
-  private ajustaArrays(): void {
+  private ajustaListasDeEnergiaEMeses(): void {
     let arrExclusao: number[] = [];
     let contExclusao: number = 0;
     if(this.listaEnergiaGerada.length > 12)
@@ -179,7 +186,7 @@ export class GraficoComponent implements OnInit {
     return 12;
   }
 
-  private atribuiDatasBusca(): void{
+  private defineDatasDeBusca(): void{
     this.mesFinal = this.descobreMes();
     this.anoFinal = this.descobreAno();
     this.mesInicial = this.mesFinal != 12 ? this.mesFinal + 1: 1;

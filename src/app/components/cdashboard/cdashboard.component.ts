@@ -15,31 +15,28 @@ export class CDashboardComponent implements OnInit {
   unidadesInativas: number = 0;
   mediaGeracao:     number = 0;
 
-  listaUnidades: IUnidade[] = [];
-  listaGeracao:  IGeracao[] = [];
-
   constructor(private unidadeService: UnidadeService, private geracaoService: GeracaoService) { }
 
   ngOnInit(): void {   
     this.unidadeService.devolveUnidades(environment.idUsuario).subscribe((unidades: IUnidade[]) => {
-    this.listaUnidades = unidades;
-    this.totalUnidades    = this.listaUnidades.length;
-    this.unidadesAtivas   = this.listaUnidades.filter(unidade => unidade.status).length;
-    this.unidadesInativas = this.listaUnidades.filter(unidade => !unidade.status).length;
-    let somaGeracao: number = 0;
-    let listaUnidadesAtivas: IUnidade[] = [];
+    this.totalUnidades    = unidades.length;
+    this.unidadesAtivas   = unidades.filter(unidade => unidade.status).length;
+    this.unidadesInativas = unidades.filter(unidade => !unidade.status).length;
     this.unidadeService.devolveUnidadesAtivas(environment.idUsuario).subscribe((unidades: IUnidade[]) => {
-      listaUnidadesAtivas = unidades;
       this.geracaoService.devolveGeracoes().subscribe((geracoes: IGeracao[]) => {
-        this.listaGeracao = geracoes;
-        listaUnidadesAtivas.forEach((unidade) => {
-          let listaGeracaoAux: IGeracao[] = [];
-          listaGeracaoAux = this.listaGeracao.filter(geracao => geracao.idUnidade === unidade.id);
-          listaGeracaoAux.forEach((geracao) => {somaGeracao += geracao.energiaGerada});
+        this.mediaGeracao = this.calculaMediaGeracao(geracoes, unidades);
         })
-        this.mediaGeracao = somaGeracao / listaUnidadesAtivas.length;
       })
-    })
-  });
-}
+    });
+  }
+
+  private calculaMediaGeracao(geracoes: IGeracao[], unidades: IUnidade[]): number {
+    let somaGeracao: number = 0;
+    unidades.forEach((unidade) => {
+      let listaGeracaoAux: IGeracao[] = [];
+      listaGeracaoAux = geracoes.filter(geracao => geracao.idUnidade === unidade.id);
+      listaGeracaoAux.forEach((geracao) => {somaGeracao += geracao.energiaGerada});
+      })
+    return somaGeracao / unidades.length;
+  }
 }

@@ -16,7 +16,7 @@ export class UnidadesComponent implements OnInit {
   faPencil = faPencil;
   faCancel = faCancel;
   faRemove = faRemove;
-  faStar = faStar;
+  faStar   = faStar;
   
   listaUnidades: IUnidade[] = [];
 
@@ -29,20 +29,19 @@ export class UnidadesComponent implements OnInit {
     })
   }
 
-  removerUnidade(idUnidade: string) {
+  public editarUnidade(idUnidade: string){
+    this.unidadeService.unidadeEditavel = this.listaUnidades.find(unidade => unidade.id == idUnidade);
+    this.router.navigate(['/cadastro-unidade']);
+  }
+
+  public removerUnidade(idUnidade: string) {
     let unidadeGeradora: any;
     unidadeGeradora = this.listaUnidades.find(unidade => unidade.id == idUnidade);
     if(unidadeGeradora){
       this.unidadeService.removerUnidade(unidadeGeradora.id).subscribe((res) => {
         location.reload();
-        this.router.navigate(['/unidades']);
       })
     }
-  }
-
-  editarUnidade(idUnidade: string){
-    this.unidadeService.unidadeEditavel = this.listaUnidades.find(unidade => unidade.id == idUnidade);
-    this.router.navigate(['/cadastro-unidade']);
   }
 
 }

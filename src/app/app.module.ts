@@ -1,4 +1,3 @@
-import { environment } from 'src/environments/environment';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,37 +15,13 @@ import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { CDashboardComponent } from './components/cdashboard/cdashboard.component';
 import { NgChartsModule } from 'ng2-charts';
 import { GraficoComponent } from './components/grafico/grafico.component';
-import { Route, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { CadastroGeracaoComponent } from './pages/cadastro-geracao/cadastro-geracao.component';
 import { GeracaoComponent } from './components/geracao/geracao.component';
 import { CadastroUnidadeComponent } from './pages/cadastro-unidade/cadastro-unidade.component';
 
-const ROTAS: Route[] = [
-  {
-    path: '',
-    component: LoginComponent
-  },
-  {
-    path: 'dashboard',
-    component: environment.userLogado ? DashboardComponent : LoginComponent
-  },
-  {
-    path: 'cadastro-geracao',
-    component: environment.userLogado ? CadastroGeracaoComponent : LoginComponent
-  },
-  {
-    path: 'unidades',
-    component: environment.userLogado ? ListaUnidadesComponent : LoginComponent
-  },
-  {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'cadastro-unidade',
-    component: environment.userLogado ? CadastroUnidadeComponent : LoginComponent
-  }
-]
+import { ROTAS } from './constants/rotas.constant';
+
 @NgModule({
   declarations: [
     AppComponent,

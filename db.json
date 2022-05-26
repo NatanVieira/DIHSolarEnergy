@@ -75,13 +75,22 @@
       "id": "58378930"
     },
     {
-      "apelido": "teste 49",
-      "local": "teste 49",
-      "marca": "teste 49",
-      "modelo": "teste 49",
+      "apelido": "teste 6",
+      "local": "teste 6",
+      "marca": "teste 6",
+      "modelo": "teste 6",
       "status": true,
       "idUsuario": "1",
-      "id": "2683045511"
+      "id": "4873034425"
+    },
+    {
+      "apelido": "unidade 49",
+      "local": "local 49",
+      "marca": "marca 49",
+      "modelo": "modelo 49",
+      "status": true,
+      "idUsuario": "3",
+      "id": "695556077"
     }
   ],
   "geracao": [
@@ -264,6 +273,24 @@
       "ano": 2022,
       "nomeMes": "Mai",
       "data": "2022-05-19"
+    },
+    {
+      "id": "3368577355",
+      "idUnidade": "8687328741",
+      "energiaGerada": 5000,
+      "mes": 2,
+      "ano": 2022,
+      "nomeMes": "Fev",
+      "data": "2022-02-15"
+    },
+    {
+      "id": "3689350377",
+      "idUnidade": "4873034425",
+      "energiaGerada": 1486,
+      "mes": 3,
+      "ano": 2022,
+      "nomeMes": "Mar",
+      "data": "2022-03-22"
     }
   ]
 }

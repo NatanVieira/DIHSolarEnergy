@@ -9,10 +9,10 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  email: string = '';
-  senha: string = '';
-  usuarioValido: boolean = true;
-  listaUsuarios: IUsuario[] = [];
+  public email: string = '';
+  public senha: string = '';
+  public usuarioValido: boolean = true;
+  private listaUsuarios: IUsuario[] = [];
   constructor(private usuarioService: UsuarioService, private router: Router) { }
 
   ngOnInit(): void {
@@ -20,14 +20,12 @@ export class LoginComponent implements OnInit {
   }
 
   validaUsuario(){
-    const indexUsuario = this.listaUsuarios.findIndex(usuario => usuario.email == this.email && usuario.senha == this.senha);
-    if (indexUsuario != null && indexUsuario != -1){
-      environment.idUsuario = this.listaUsuarios[indexUsuario].id;
-      environment.userName  = this.listaUsuarios[indexUsuario].user;
-      environment.userLogado = true;
+    const usuario: IUsuario | undefined = this.listaUsuarios.find(usuario => usuario.email == this.email  && usuario.senha == this.senha);
+    environment.idUsuario = usuario ? usuario.id : '0';
+    environment.userName  = usuario ? usuario.user : '';
+    environment.userLogado = usuario ? true : false;
+    this.usuarioValido     = usuario ? true : false;
+    if (usuario)
       this.router.navigate(['/dashboard']);
-    }
-    else
-      this.usuarioValido = false;
   }
 }
