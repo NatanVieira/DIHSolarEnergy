@@ -25,7 +25,9 @@ export class LoginComponent implements OnInit {
     this.usuarioService.userNameLogado  = usuario ? usuario.user : '';
     this.usuarioService.userLogado      = usuario ? true : false;
     this.usuarioValido     = usuario ? true : false;
-    if (usuario)
+    if (usuario){
+      this.usuarioService.salvaIDUsuarioLocalStorage();
       this.router.navigate(['/dashboard']);
+    }
   }
 }

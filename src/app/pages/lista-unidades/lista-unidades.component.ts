@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SessaoLocalService } from 'src/app/services/sessao-local.service';
 @Component({
   selector: 'dih-lista-unidades',
   templateUrl: './lista-unidades.component.html',

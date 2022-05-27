@@ -28,9 +28,7 @@ export class MenuLateralComponent implements OnInit {
     this.usuarioService.idUsuarioLogado = '';
     this.usuarioService.userNameLogado = '';
     this.usuarioService.userLogado = false;
+    this.usuarioService.apagaIDUsuarioLocalStorage();
     this.route.navigate(['/login']);
-  }
-  
-  public alteraModo() {
   }
 }

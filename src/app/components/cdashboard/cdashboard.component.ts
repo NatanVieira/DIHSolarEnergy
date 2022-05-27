@@ -21,7 +21,6 @@ export class CDashboardComponent implements OnInit {
   constructor(private unidadeService: UnidadeService, private geracaoService: GeracaoService, private usuarioService: UsuarioService, private sessaoLocalService: SessaoLocalService) { }
 
   ngOnInit(): void {  
-    console.log(this.usuarioService.idUsuarioLogado + ' ' + this.usuarioService.userNameLogado + ' ' + this.usuarioService.userLogado); 
     this.mostraAlerta = this.sessaoLocalService.cadastroAtualizacao;
     this.sessaoLocalService.zeraCadastroAtualizacao();
     this.unidadeService.devolveUnidades(this.usuarioService.idUsuarioLogado).subscribe((unidades: IUnidade[]) => {

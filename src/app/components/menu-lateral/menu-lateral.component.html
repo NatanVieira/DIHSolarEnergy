@@ -15,8 +15,4 @@
     <div class="flex-row botao" data-toggle="tooltip" data-placement="top" title="Sair">
         <span><fa-icon [icon]="faClose" routerLink="/login"></fa-icon></span><span class="telaPequena" (click)="logout()"> Sair</span>
     </div>
-    <div class="flex-row botao" data-toggle="tooltip" data-placement="top" title="Altera modo">
-        <span *ngIf="modo === 'claro'" class="telaPequena" (click)="alteraModo()"><fa-icon [icon]="faMoon"></fa-icon></span>
-        <span *ngIf="modo === 'escuro'" class="telaPequena" (click)="alteraModo()"><fa-icon [icon]="faSun"></fa-icon></span>
-    </div>
 </div>
