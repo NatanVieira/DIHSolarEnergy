@@ -3,15 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  idUsuario: '',
-  userName: '',
-  URL_API_REST: 'http://localhost:3000/',
-  userLogado: false,
-  fonteFam: 'Mustica',
-  bgColor: '#EC6500',
-  fgColor: 'black',
-  cadastroAtualizacao: 0, /*0 Nao faz nada, 1 Sucesso , 2 Falha*/
+   production: false,
+  // URL_API_REST: 'http://localhost:3000/',
+  // fonteFam: 'Mustica',
+  // bgColor: '#EC6500',
+  // fgColor: 'black',
+  // cadastroAtualizacao: 0, /*0 Nao faz nada, 1 Sucesso , 2 Falha*/
+  // modo: 'claro',
 };
 
 /*

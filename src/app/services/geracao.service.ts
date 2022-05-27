@@ -1,16 +1,18 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, tap, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { IGeracao } from '../models/igeracao.model';
-import { environment } from 'src/environments/environment';
+import { SessaoLocalService } from './sessao-local.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GeracaoService {
-  private cEntidade: string = environment.URL_API_REST + 'geracao';
+  private cEntidade: string = ''; //environment.URL_API_REST + 'geracao';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private sessaoLocalService: SessaoLocalService) { 
+    this.cEntidade = this.sessaoLocalService.URL_API_REST + 'geracao';
+  }
 
   public devolveGeracaoPorUnidade (idUnidade: string): Observable<IGeracao[]> {
     return this.http.get<IGeracao[]>(this.cEntidade + '?idUnidade=' + idUnidade);

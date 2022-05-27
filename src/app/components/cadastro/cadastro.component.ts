@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { timeout } from 'rxjs';
 import { IUnidade } from 'src/app/models/iunidade.model';
+import { SessaoLocalService } from 'src/app/services/sessao-local.service';
 import { UnidadeService } from 'src/app/services/unidade.service';
-import { environment } from 'src/environments/environment';
+import { UsuarioService } from 'src/app/services/usuario.service';
 @Component({
   selector: 'dih-cadastro',
   templateUrl: './cadastro.component.html',
@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 export class CadastroComponent implements OnInit {
   unidadeGeradora: IUnidade = {
     id: '',
-    idUsuario: environment.idUsuario,
+    idUsuario: '',
     apelido: '',
     marca: '',
     modelo: '',
@@ -21,11 +21,12 @@ export class CadastroComponent implements OnInit {
   };
   mostrarAlerta: number = 0;
 
-  constructor(private unidadeService: UnidadeService, private router: Router) { }
+  constructor(private unidadeService: UnidadeService, private router: Router, private usuarioService: UsuarioService, private sessaoLocalService: SessaoLocalService) { }
 
   ngOnInit(): void {
-    this.mostrarAlerta = environment.cadastroAtualizacao;
-    setTimeout(function() {environment.cadastroAtualizacao = 0}, 3000);
+    this.mostrarAlerta = this.sessaoLocalService.cadastroAtualizacao;
+    this.sessaoLocalService.zeraCadastroAtualizacao();
+    this.unidadeGeradora.idUsuario = this.usuarioService.idUsuarioLogado;
     if(this.unidadeService.unidadeEditavel !== null && this.unidadeService.unidadeEditavel !== {})
       this.unidadeGeradora = this.unidadeService.unidadeEditavel;
   }
@@ -38,7 +39,7 @@ export class CadastroComponent implements OnInit {
   }
 
   private cadastrarUnidade() {
-    this.unidadeGeradora.idUsuario = environment.idUsuario;
+    this.unidadeGeradora.idUsuario = this.usuarioService.idUsuarioLogado;
     this.unidadeService.cadastraUnidade(this.unidadeGeradora).subscribe((unidade) => {this.atualizaPagina(1)},
                                                                         (error?) => {this.atualizaPagina(2)});
   }
@@ -49,7 +50,7 @@ export class CadastroComponent implements OnInit {
   }
 
   private atualizaPagina(opcao: number): void {
-    environment.cadastroAtualizacao = opcao;
+    this.sessaoLocalService.cadastroAtualizacao = opcao;
     this.router.navigate(['/unidades']);
   }
 

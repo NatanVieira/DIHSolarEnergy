@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IGeracao } from 'src/app/models/igeracao.model';
 import { IUnidade } from 'src/app/models/iunidade.model';
 import { GeracaoService } from 'src/app/services/geracao.service';
+import { SessaoLocalService } from 'src/app/services/sessao-local.service';
 import { UnidadeService } from 'src/app/services/unidade.service';
-import { environment } from 'src/environments/environment';
+import { UsuarioService } from 'src/app/services/usuario.service';
 @Component({
   selector: 'dih-cdashboard',
   templateUrl: './cdashboard.component.html',
@@ -17,26 +18,27 @@ export class CDashboardComponent implements OnInit {
 
   mostraAlerta: number = 0;
 
-  constructor(private unidadeService: UnidadeService, private geracaoService: GeracaoService) { }
+  constructor(private unidadeService: UnidadeService, private geracaoService: GeracaoService, private usuarioService: UsuarioService, private sessaoLocalService: SessaoLocalService) { }
 
-  ngOnInit(): void {   
-    this.mostraAlerta = environment.cadastroAtualizacao;
-    setTimeout(function() {environment.cadastroAtualizacao = 0}, 3000);
-    this.unidadeService.devolveUnidades(environment.idUsuario).subscribe((unidades: IUnidade[]) => {
+  ngOnInit(): void {  
+    console.log(this.usuarioService.idUsuarioLogado + ' ' + this.usuarioService.userNameLogado + ' ' + this.usuarioService.userLogado); 
+    this.mostraAlerta = this.sessaoLocalService.cadastroAtualizacao;
+    this.sessaoLocalService.zeraCadastroAtualizacao();
+    this.unidadeService.devolveUnidades(this.usuarioService.idUsuarioLogado).subscribe((unidades: IUnidade[]) => {
       this.totalUnidades    = unidades.length;
       this.unidadesAtivas   = unidades.filter(unidade => unidade.status).length;
       this.unidadesInativas = unidades.filter(unidade => !unidade.status).length;
-      this.unidadeService.devolveUnidadesAtivas(environment.idUsuario).subscribe((unidades: IUnidade[]) => {
+      this.unidadeService.devolveUnidadesAtivas(this.usuarioService.idUsuarioLogado).subscribe((unidades: IUnidade[]) => {
         this.geracaoService.devolveGeracoes().subscribe((geracoes: IGeracao[]) => {
           this.mediaGeracao = this.calculaMediaGeracao(geracoes, unidades);
         },
-        (error?) => {environment.cadastroAtualizacao = 2,
+        (error?) => {this.sessaoLocalService.cadastroAtualizacao = 2,
                      this.ngOnInit()})
       },
-      (error?) => {environment.cadastroAtualizacao = 2,
+      (error?) => {this.sessaoLocalService.cadastroAtualizacao = 2,
                    this.ngOnInit()})
     },
-    (error?) => {environment.cadastroAtualizacao = 2;
+    (error?) => {this.sessaoLocalService.cadastroAtualizacao = 2;
                  this.ngOnInit()});
   }
 

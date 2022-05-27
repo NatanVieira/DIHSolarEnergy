@@ -5,8 +5,9 @@ import { faCancel } from '@fortawesome/free-solid-svg-icons';
 import { faRemove } from '@fortawesome/free-solid-svg-icons';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { IUnidade } from 'src/app/models/iunidade.model';
+import { SessaoLocalService } from 'src/app/services/sessao-local.service';
 import { UnidadeService } from 'src/app/services/unidade.service';
-import { environment } from 'src/environments/environment';
+import { UsuarioService } from 'src/app/services/usuario.service';
 @Component({
   selector: 'dih-unidades',
   templateUrl: './unidades.component.html',
@@ -21,16 +22,16 @@ export class UnidadesComponent implements OnInit {
   mostraAlerta: number = 0;
   listaUnidades: IUnidade[] = [];
 
-  constructor(private unidadeService: UnidadeService, private router: Router) { }
+  constructor(private unidadeService: UnidadeService, private router: Router, private usuarioService: UsuarioService, private sessaoLocalService: SessaoLocalService) { }
 
   ngOnInit(): void {
-    this.unidadeService.devolveUnidadesAtivas(environment.idUsuario).subscribe((unidades: IUnidade[]) => {
+    this.unidadeService.devolveUnidadesAtivas(this.usuarioService.idUsuarioLogado).subscribe((unidades: IUnidade[]) => {
       this.listaUnidades = unidades;
       this.unidadeService.unidadeEditavel = {};
-      this.mostraAlerta = environment.cadastroAtualizacao;
-      setTimeout(function() {environment.cadastroAtualizacao = 0});
+      this.mostraAlerta = this.sessaoLocalService.cadastroAtualizacao;
+      this.sessaoLocalService.zeraCadastroAtualizacao();
     },
-    (error?) => {environment.cadastroAtualizacao = 2;
+    (error?) => {this.sessaoLocalService.cadastroAtualizacao = 2;
                  this.ngOnInit();})
   }
 
@@ -44,10 +45,10 @@ export class UnidadesComponent implements OnInit {
     unidadeGeradora = this.listaUnidades.find(unidade => unidade.id == idUnidade);
     if(unidadeGeradora){
       this.unidadeService.removerUnidade(unidadeGeradora.id).subscribe((res) => {
-        environment.cadastroAtualizacao = 3
+        this.sessaoLocalService.cadastroAtualizacao = 3
         this.ngOnInit();
       },
-      (error?) => {environment.cadastroAtualizacao = 4;
+      (error?) => {this.sessaoLocalService.cadastroAtualizacao = 4;
                    this.ngOnInit()})
     }
   }

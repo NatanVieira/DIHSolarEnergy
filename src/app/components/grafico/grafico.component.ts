@@ -4,8 +4,9 @@ import { BaseChartDirective } from 'ng2-charts';
 import { IGeracao } from 'src/app/models/igeracao.model';
 import { IUnidade } from 'src/app/models/iunidade.model';
 import { GeracaoService } from 'src/app/services/geracao.service';
+import { SessaoLocalService } from 'src/app/services/sessao-local.service';
 import { UnidadeService } from 'src/app/services/unidade.service';
-import { environment } from 'src/environments/environment';
+import { UsuarioService } from 'src/app/services/usuario.service';
 @Component({
   selector: 'dih-grafico',
   templateUrl: './grafico.component.html',
@@ -27,11 +28,11 @@ export class GraficoComponent implements OnInit {
       {
         data: [],
         label: 'Consumo (kW)',
-        backgroundColor: environment.bgColor,
-        borderColor: environment.bgColor,
-        pointBackgroundColor: environment.bgColor,
-        pointHoverBackgroundColor: environment.bgColor,
-        pointHoverBorderColor: environment.bgColor,
+        backgroundColor: this.sessaoLocalService.bgColor,
+        borderColor: this.sessaoLocalService.bgColor,
+        pointBackgroundColor: this.sessaoLocalService.bgColor,
+        pointHoverBackgroundColor: this.sessaoLocalService.bgColor,
+        pointHoverBorderColor: this.sessaoLocalService.bgColor,
       }],
       labels: [],
     }
@@ -46,27 +47,27 @@ export class GraficoComponent implements OnInit {
     scales: {
       x: {
         ticks : {
-          color: environment.fgColor,
+          color: this.sessaoLocalService.fgColor,
           font: {
-            family: environment.fonteFam
+            family: this.sessaoLocalService.fonteFam
           }
         },
         title: {
           text: '*Últimos 12 meses',
           align: 'end',
           display: true,
-          color: environment.fgColor,
+          color: this.sessaoLocalService.fgColor,
           font: {
-            family: environment.fonteFam
+            family: this.sessaoLocalService.fonteFam
           }
         },
       },
       'y-axis-0':
         {
           ticks: {
-            color: environment.fgColor,
+            color: this.sessaoLocalService.fgColor,
             font: {
-              family: environment.fonteFam
+              family: this.sessaoLocalService.fonteFam
             }
           }
         }
@@ -75,9 +76,9 @@ export class GraficoComponent implements OnInit {
       legend: {
         labels:{
           font: {
-            family: environment.fonteFam
+            family: this.sessaoLocalService.fonteFam
           },
-          color: environment.fgColor
+          color: this.sessaoLocalService.fgColor
         }
       }
     }
@@ -85,12 +86,12 @@ export class GraficoComponent implements OnInit {
 
   @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
 
-  constructor(private geracaoService: GeracaoService, private unidadeService: UnidadeService) { }
+  constructor(private geracaoService: GeracaoService, private unidadeService: UnidadeService, private usuarioService: UsuarioService, private sessaoLocalService: SessaoLocalService) { }
 
   ngOnInit(): void {
-    this.mostraAlerta = environment.cadastroAtualizacao;
-    setTimeout (function() {environment.cadastroAtualizacao = 0}, 3000)
-    this.unidadeService.devolveUnidadesAtivas(environment.idUsuario).subscribe((unidades: IUnidade[]) => {
+    this.mostraAlerta = this.sessaoLocalService.cadastroAtualizacao;
+    this.sessaoLocalService.zeraCadastroAtualizacao();
+    this.unidadeService.devolveUnidadesAtivas(this.usuarioService.idUsuarioLogado).subscribe((unidades: IUnidade[]) => {
       this.geracaoService.devolveGeracoes().subscribe((geracoes: IGeracao[]) => {
         let listaGeracaoUnidades: IGeracao[] = []
         unidades.forEach((unidade) => {
@@ -98,10 +99,10 @@ export class GraficoComponent implements OnInit {
         })
         this.atualizaListasDeEnergiaEMeses(listaGeracaoUnidades);
       },
-      (error?) => {environment.cadastroAtualizacao = 2;
+      (error?) => {this.sessaoLocalService.cadastroAtualizacao = 2;
                    this.ngOnInit();})
     },
-    (error?) => {environment.cadastroAtualizacao = 2;
+    (error?) => {this.sessaoLocalService.cadastroAtualizacao = 2;
                  this.ngOnInit();})
   }
 

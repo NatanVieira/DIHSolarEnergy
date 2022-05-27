@@ -9,7 +9,6 @@ export class ListaUnidadesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-
   }
 
 }

@@ -1,17 +1,19 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, tap, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { IUnidade } from '../models/iunidade.model';
-import { environment } from 'src/environments/environment';
+import { SessaoLocalService } from './sessao-local.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UnidadeService {
-  private cEntidade: string = environment.URL_API_REST + 'unidades';
+  private cEntidade: string = ''; //environment.URL_API_REST + 'unidades';
 
   public unidadeEditavel: any;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private sessaoLocalService: SessaoLocalService) { 
+    this.cEntidade = this.sessaoLocalService.URL_API_REST + 'unidades';
+  }
 
   public devolveUnidades(idUsuario: string): Observable<IUnidade[]>{
     return this.http.get<IUnidade[]>(this.cEntidade + '?idUsuario=' + idUsuario);

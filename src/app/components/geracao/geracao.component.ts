@@ -3,8 +3,9 @@ import { Router } from '@angular/router';
 import { IGeracao } from 'src/app/models/igeracao.model';
 import { IUnidade } from 'src/app/models/iunidade.model';
 import { GeracaoService } from 'src/app/services/geracao.service';
+import { SessaoLocalService } from 'src/app/services/sessao-local.service';
 import { UnidadeService } from 'src/app/services/unidade.service';
-import { environment } from 'src/environments/environment';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'dih-geracao',
@@ -24,23 +25,23 @@ export class GeracaoComponent implements OnInit {
     nomeMes: '',
     data: ''
   }
-  constructor(private unidadeService: UnidadeService, private geracaoService: GeracaoService, private router: Router) { }
+  constructor(private unidadeService: UnidadeService, private geracaoService: GeracaoService, private router: Router, private usuarioService: UsuarioService, private sessaoLocalService: SessaoLocalService) { }
 
   ngOnInit(): void {
-    this.mostraAlerta = environment.cadastroAtualizacao;
-    setTimeout (function() {environment.cadastroAtualizacao = 0}, 3000);
-    this.unidadeService.devolveUnidadesAtivas(environment.idUsuario).subscribe((unidades) => {
+    this.mostraAlerta = this.sessaoLocalService.cadastroAtualizacao;
+    this.sessaoLocalService.zeraCadastroAtualizacao();
+    this.unidadeService.devolveUnidadesAtivas(this.usuarioService.idUsuarioLogado).subscribe((unidades) => {
       this.listaUnidades = unidades;
     },
-    (error?) => {environment.cadastroAtualizacao = 3;
+    (error?) => {this.sessaoLocalService.cadastroAtualizacao = 3;
                  this.ngOnInit();})
   }
 
   public cadastrarGeracao() {
     this.geracaoService.cadastraGeracao(this.geracao).subscribe((res) => {
-      environment.cadastroAtualizacao = 1;
+      this.sessaoLocalService.cadastroAtualizacao = 1;
       this.router.navigate(['/dashboard']);
-    },(error?) => {environment.cadastroAtualizacao = 2;
+    },(error?) => {this.sessaoLocalService.cadastroAtualizacao = 2;
                    this.ngOnInit()});
   }
 }
