@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SessaoLocalService } from 'src/app/services/sessao-local.service';
 @Component({
   selector: 'dih-dashboard',
   templateUrl: './dashboard.component.html',

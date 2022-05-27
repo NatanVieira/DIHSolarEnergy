@@ -1,0 +1,37 @@
+<div class="row align-items-center">
+    <div id="modalCadastro" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Registro</h5>
+                <span aria-hidden="true" type="button" class="btn" data-dismiss="modal" data-bs-dismiss="modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form #formRegistro="ngForm" (submit)="formRegistro.valid">
+                  <div class="form-group">
+                    <input type="text" required="true" name="email" class="form-control" placeholder="E-mail" [(ngModel)]="novoUsuario.email">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" required="true" name="nomeUsuario" class="form-control" placeholder="Nome de usuário" [(ngModel)]="novoUsuario.nomeUsuario">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" required="true" name="senha" class="form-control" placeholder="Senha" [(ngModel)]="novoUsuario.senha">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" required="true" name="confirmacaoSenha" class="form-control" placeholder="Confirme a senha" [(ngModel)]="novoUsuario.confirmacaoSenha">
+                  </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="alerta alert alert-danger alert-dismissible" data-toggle="alert" data-bs-toggle="alert" role="alert" *ngIf="alerta === 2">
+                  Não foi possível cadastrar!
+                </div>
+                <div class="alerta alert alert-success alert-dismissible" data-toggle="alert" data-bs-toggle="alert" role="alert" *ngIf="alerta === 1">
+                  Usuário cadastrado com sucesso!
+                </div>
+                <button type="button" class="btn btn-primary botao" [disabled]="!formRegistro.valid" (click)="cadastrarUsuario()">Cadastrar</button>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>

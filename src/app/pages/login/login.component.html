@@ -5,7 +5,8 @@
         <div class="col login">
             <img src="../../../assets/img/logo.png" alt="logo" class="logo">
             <span>Seja bem-vindo(a)!</span>
-            <form  #formLogin="ngForm" (submit)="formLogin.valid">
+            <dih-login-formulario></dih-login-formulario>
+            <!-- <form  #formLogin="ngForm" (submit)="formLogin.valid">
                 <div class="form-group">
                     <label>E-mail</label>
                     <input type="email" required="true" class="form-control" name="email" aria-describedby="emailHelp" placeholder="E-mail" [(ngModel)]="email">
@@ -14,11 +15,49 @@
                     <label>Senha</label>
                     <input type="password"  required="true" class="form-control" name="senha" placeholder="Senha" [(ngModel)]="senha">
                 </div>
-                <button  class="botao" type="submit" class="btn btn-primary botao" (click)="validaUsuario()">Entrar</button>
+                <div class="row align-items-center">
+                    <button type="submit" class="col btn btn-primary botao" (click)="validaUsuario()">Entrar</button>
+                    <button type="submit" class="col btn btn-primary botao" data-bs-toggle="modal" data-toggle="modal" data-bs-target="#modalCadastro" data-target="#modalCadastro">Registrar</button>
+                </div>
                 <div class="alert alert-danger aviso" role="alert" *ngIf="!usuarioValido">
                     E-mail ou senha incorretos!
                 </div>
-            </form>
+            </form> -->
         </div>
+    </div>
+    <div class="row align-items-center">
+        <dih-login-modal-registro></dih-login-modal-registro>
+        <!-- <div id="modalCadastro" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Registro</h5>
+                    <button type="button" class="btn" data-dismiss="modal" data-bs-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">Fechar</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                      <div class="form-group">
+                        <input type="text" required="true" class="form-control" placeholder="E-mail">
+                      </div>
+                      <div class="form-group">
+                        <input type="text" required="true" class="form-control" placeholder="Nome de usuário">
+                      </div>
+                      <div class="form-group">
+                        <input type="password" required="true" class="form-control" placeholder="Senha">
+                      </div>
+                      <div class="form-group">
+                        <input type="password" required="true" class="form-control" placeholder="Confirme a senha">
+                      </div>
+                    </form>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary botao">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+        </div> -->
     </div>
 </div>

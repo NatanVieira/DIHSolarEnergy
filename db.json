@@ -17,6 +17,24 @@
       "senha": "123456",
       "email": "teste3@email.com",
       "user": "teste3"
+    },
+    {
+      "id": "4224208193",
+      "email": "natanael@gmail.com",
+      "senha": "123456",
+      "user": "NatanVieira"
+    },
+    {
+      "id": "2534754152",
+      "email": "natanael@gelopar.com.br",
+      "senha": "123456",
+      "user": "NatanVieira2"
+    },
+    {
+      "id": "7214930622",
+      "email": "algum@email.com.br",
+      "senha": "123456",
+      "user": "Algum"
     }
   ],
   "unidades": [

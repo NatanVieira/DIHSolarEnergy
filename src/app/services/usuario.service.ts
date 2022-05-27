@@ -35,4 +35,13 @@ export class UsuarioService {
     this.idUsuarioLogado = this.idUsuarioLogado != undefined && this.idUsuarioLogado != null ? this.idUsuarioLogado : '';
     this.userLogado = this.idUsuarioLogado !== '' ? true: false;
   }
+
+  public cadastrarUsuario(usuario: IUsuario) {
+    usuario.id = this.geraIDUsuario();
+    return this.http.post<IUsuario>(this.cEntidade, usuario);
+  }
+
+  private geraIDUsuario(): string {
+    return String(Math.round((Math.random() * (9999999999 - 1)) + 1));
+  }
 }

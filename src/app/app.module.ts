@@ -21,6 +21,8 @@ import { GeracaoComponent } from './components/geracao/geracao.component';
 import { CadastroUnidadeComponent } from './pages/cadastro-unidade/cadastro-unidade.component';
 
 import { ROTAS } from './constants/rotas.constant';
+import { LoginFormularioComponent } from './components/login-formulario/login-formulario.component';
+import { LoginModalRegistroComponent } from './components/login-modal-registro/login-modal-registro.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { ROTAS } from './constants/rotas.constant';
     CadastroGeracaoComponent,
     GeracaoComponent,
     CadastroUnidadeComponent,
+    LoginFormularioComponent,
+    LoginModalRegistroComponent,
   ],
   imports: [
     BrowserModule,

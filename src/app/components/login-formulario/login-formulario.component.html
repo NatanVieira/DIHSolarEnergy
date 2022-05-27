@@ -1,0 +1,17 @@
+<form  #formLogin="ngForm" (submit)="formLogin.valid">
+    <div class="form-group">
+        <label>E-mail</label>
+        <input type="email" required="true" class="form-control" name="email" aria-describedby="emailHelp" placeholder="E-mail" [(ngModel)]="email">
+    </div>
+    <div class="form-group">
+        <label>Senha</label>
+        <input type="password"  required="true" class="form-control" name="senha" placeholder="Senha" [(ngModel)]="senha">
+    </div>
+    <div class="row justify-content-around">
+        <button type="submit" class="col btn btn-primary botao" (click)="validaUsuario()">Entrar</button>
+        <button type="submit" class="col btn btn-primary botao" data-bs-toggle="modal" data-toggle="modal" data-bs-target="#modalCadastro" data-target="#modalCadastro">Registrar</button>
+    </div>
+    <div class="alerta alert alert-danger alert-dismissible" data-toggle="alert" data-bs-toggle="alert" role="alert" *ngIf="!usuarioValido">
+        <span>E-mail ou senha incorretos!</span>
+    </div>
+</form>
