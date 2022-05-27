@@ -4,23 +4,24 @@ import { CadastroUnidadeComponent } from '../pages/cadastro-unidade/cadastro-uni
 import { DashboardComponent } from '../pages/dashboard/dashboard.component';
 import { ListaUnidadesComponent } from '../pages/lista-unidades/lista-unidades.component';
 import { LoginComponent } from '../pages/login/login.component';
+import { AutenticacaoGuard } from '../services/guards/autenticacao.guard';
 
 export const ROTAS: Route[] = [
     {
       path: '',
-      component: LoginComponent
+      component: DashboardComponent, canActivate: [AutenticacaoGuard]
     },
     {
       path: 'dashboard',
-      component: DashboardComponent
+      component: DashboardComponent, canActivate: [AutenticacaoGuard]
     },
     {
       path: 'cadastro-geracao',
-      component: CadastroGeracaoComponent
+      component: CadastroGeracaoComponent, canActivate: [AutenticacaoGuard]
     },
     {
       path: 'unidades',
-      component: ListaUnidadesComponent
+      component: ListaUnidadesComponent, canActivate: [AutenticacaoGuard]
     },
     {
       path: 'login',
@@ -28,6 +29,6 @@ export const ROTAS: Route[] = [
     },
     {
       path: 'cadastro-unidade',
-      component: CadastroUnidadeComponent
+      component: CadastroUnidadeComponent, canActivate: [AutenticacaoGuard]
     }
 ]

@@ -131,7 +131,7 @@
     {
       "apelido": "asavsv",
       "local": "asavsv",
-      "marca": "asavsv",
+      "marca": "teste 4",
       "modelo": "asavsv",
       "status": true,
       "idUsuario": "1",
@@ -145,15 +145,6 @@
       "status": true,
       "idUsuario": "1",
       "id": "8150490496"
-    },
-    {
-      "apelido": "Unidade 2",
-      "local": "Local Y",
-      "marca": "Marca Y",
-      "modelo": "Modelo Y",
-      "status": true,
-      "idUsuario": "1",
-      "id": "9963887956"
     },
     {
       "apelido": "Unidade 7",
@@ -399,6 +390,15 @@
       "ano": 2022,
       "nomeMes": "Jan",
       "data": "2022-01-11"
+    },
+    {
+      "id": "6489993711",
+      "idUnidade": "6075630769",
+      "energiaGerada": 3400,
+      "mes": 10,
+      "ano": 2021,
+      "nomeMes": "Out",
+      "data": "2021-10-05"
     }
   ]
 }

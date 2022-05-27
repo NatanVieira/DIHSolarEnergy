@@ -36,7 +36,7 @@ import { ROTAS } from './constants/rotas.constant';
     GraficoComponent,
     CadastroGeracaoComponent,
     GeracaoComponent,
-    CadastroUnidadeComponent
+    CadastroUnidadeComponent,
   ],
   imports: [
     BrowserModule,

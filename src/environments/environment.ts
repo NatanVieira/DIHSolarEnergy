@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  idUsuario: '1',
-  userName: 'teste1',
+  idUsuario: '',
+  userName: '',
   URL_API_REST: 'http://localhost:3000/',
-  userLogado: true,
+  userLogado: false,
   fonteFam: 'Mustica',
   bgColor: '#EC6500',
   fgColor: 'black',
