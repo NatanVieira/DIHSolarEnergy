@@ -30,19 +30,33 @@ export class LoginModalRegistroComponent implements OnInit {
 
   cadastrarUsuario() {
     if(this.novoUsuario){
-      let usuario: IUsuario = {
-        id: '',
-        email: '',
-        senha: '',
-        user: '',
-      };
-      usuario.email = this.novoUsuario.email;
-      usuario.senha = this.novoUsuario.senha;
-      usuario.user  = this.novoUsuario.nomeUsuario;
-      this.usuarioService.cadastrarUsuario(usuario).subscribe((usuario: IUsuario) => {this.sessaoLocalService.cadastroAtualizacao = 1;
-                                                                                      this.ngOnInit()},
-                                                                       (error?) => {this.sessaoLocalService.cadastroAtualizacao = 2;
-                                                                                    this.ngOnInit()})
+      if(this.listaUsuarios.find(usuario => usuario.email == this.novoUsuario.email)){
+        this.sessaoLocalService.cadastroAtualizacao = 4;
+        this.ngOnInit();
+      }
+      else if(this.novoUsuario.senha != this.novoUsuario.confirmacaoSenha){
+        this.sessaoLocalService.cadastroAtualizacao = 6;
+        this.ngOnInit();
+      }
+      else if (this.listaUsuarios.find(usuario => usuario.user == this.novoUsuario.nomeUsuario)){
+        this.sessaoLocalService.cadastroAtualizacao = 8;
+        this.ngOnInit();
+      }
+      else{
+        let usuario: IUsuario = {
+          id: '',
+          email: '',
+          senha: '',
+          user: '',
+        };
+        usuario.email = this.novoUsuario.email;
+        usuario.senha = this.novoUsuario.senha;
+        usuario.user  = this.novoUsuario.nomeUsuario;
+        this.usuarioService.cadastrarUsuario(usuario).subscribe((usuario: IUsuario) => {this.sessaoLocalService.cadastroAtualizacao = 1;
+                                                                                        this.ngOnInit()},
+                                                                        (error?) => {this.sessaoLocalService.cadastroAtualizacao = 2;
+                                                                                      this.ngOnInit()})
+      }
     }
   }
 

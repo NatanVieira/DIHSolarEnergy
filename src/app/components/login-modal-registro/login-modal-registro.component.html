@@ -23,6 +23,9 @@
                 </form>
             </div>
             <div class="modal-footer">
+                <dih-alerta [mensagem]="'E-mail já cadastrado!'" [sucessoOuFalha]="2" [mostraBtnFecha]="false" *ngIf="mostrarAlerta === 4"></dih-alerta>
+                <dih-alerta [mensagem]="'Senhas não batem!'" [sucessoOuFalha]="2" [mostraBtnFecha]="false" *ngIf="mostrarAlerta === 6"></dih-alerta>
+                <dih-alerta [mensagem]="'Nome de usuário já está em uso!'" [sucessoOuFalha]="2" [mostraBtnFecha]="false" *ngIf="mostrarAlerta === 8"></dih-alerta>
                 <dih-alerta [mensagem]="'Não foi possível cadastrar!'" [sucessoOuFalha]="mostrarAlerta" [mostraBtnFecha]="false" *ngIf="mostrarAlerta === 2"></dih-alerta>
                 <dih-alerta [mensagem]="'Usuário cadastrado com sucesso!'" [sucessoOuFalha]="mostrarAlerta" [mostraBtnFecha]="false" *ngIf="mostrarAlerta === 1"></dih-alerta>
                 <button type="button" class="btn btn-primary botao" [disabled]="!formRegistro.valid" (click)="cadastrarUsuario()">Cadastrar</button>
