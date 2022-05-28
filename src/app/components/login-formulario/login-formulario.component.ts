@@ -16,11 +16,11 @@ export class LoginFormularioComponent implements OnInit {
   constructor(private usuarioService: UsuarioService, private router: Router) { }
 
   ngOnInit(): void {
-    this.usuarioService.devolveUsuarios().subscribe((usuarios: IUsuario[]) => {this.listaUsuarios = usuarios}); 
+    this.usuarioService.devolveUsuarios().subscribe((usuarios: IUsuario[]) => {this.listaUsuarios = usuarios});
   }
   
   validaUsuario(){
-    const usuario: IUsuario | undefined = this.listaUsuarios.find(usuario => usuario.email == this.email  && usuario.senha == this.senha);
+    const usuario: IUsuario | undefined = this.listaUsuarios.find(usuario => usuario.email == this.email  && atob(usuario.senha) == this.senha);
     this.usuarioService.idUsuarioLogado = usuario ? usuario.id : '';
     this.usuarioService.userNameLogado  = usuario ? usuario.user : '';
     this.usuarioService.userLogado      = usuario ? true : false;

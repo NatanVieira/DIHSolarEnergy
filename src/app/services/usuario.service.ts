@@ -38,6 +38,7 @@ export class UsuarioService {
 
   public cadastrarUsuario(usuario: IUsuario) {
     usuario.id = this.geraIDUsuario();
+    usuario.senha = btoa(usuario.senha);
     return this.http.post<IUsuario>(this.cEntidade, usuario);
   }
 
