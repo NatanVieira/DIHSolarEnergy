@@ -9,7 +9,7 @@
             <div class="modal-body">
                 <form #formRegistro="ngForm" (submit)="formRegistro.valid">
                   <div class="form-group">
-                    <input type="text" required="true" name="email" class="form-control" placeholder="E-mail" [(ngModel)]="novoUsuario.email">
+                    <input type="email" required="true" name="email" class="form-control" placeholder="E-mail" [(ngModel)]="novoUsuario.email">
                   </div>
                   <div class="form-group">
                     <input type="text" required="true" name="nomeUsuario" class="form-control" placeholder="Nome de usuário" [(ngModel)]="novoUsuario.nomeUsuario">
@@ -23,12 +23,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <div class="alerta alert alert-danger alert-dismissible" data-toggle="alert" data-bs-toggle="alert" role="alert" *ngIf="alerta === 2">
-                  Não foi possível cadastrar!
-                </div>
-                <div class="alerta alert alert-success alert-dismissible" data-toggle="alert" data-bs-toggle="alert" role="alert" *ngIf="alerta === 1">
-                  Usuário cadastrado com sucesso!
-                </div>
+                <dih-alerta [mensagem]="'Não foi possível cadastrar!'" [sucessoOuFalha]="mostrarAlerta" [mostraBtnFecha]="false" *ngIf="mostrarAlerta === 2"></dih-alerta>
+                <dih-alerta [mensagem]="'Usuário cadastrado com sucesso!'" [sucessoOuFalha]="mostrarAlerta" [mostraBtnFecha]="false" *ngIf="mostrarAlerta === 1"></dih-alerta>
                 <button type="button" class="btn btn-primary botao" [disabled]="!formRegistro.valid" (click)="cadastrarUsuario()">Cadastrar</button>
             </div>
         </div>

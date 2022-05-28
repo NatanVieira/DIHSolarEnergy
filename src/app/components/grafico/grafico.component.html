@@ -1,7 +1,4 @@
-<div class="alerta alert alert-danger alert-dismissible" data-toggle="alert" role="alert" *ngIf="mostraAlerta === 2">
-    Não foi possível carregar os dados para o gráfico!
-    <span class="close" data-bs-dismiss="alert" data-dismiss="alert" aria-label="Close">X</span>
-</div>
+<dih-alerta [mensagem]="'Não foi possível carregar os dados para o gráfico!'" [sucessoOuFalha]="mostraAlerta" [mostraBtnFecha]="true" *ngIf="mostraAlerta === 2"></dih-alerta>
 <div class="row">
     <div style="display: block;">
         <canvas baseChart width="100%" height="20%"

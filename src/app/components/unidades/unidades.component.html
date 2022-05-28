@@ -1,20 +1,8 @@
 <div class="container-fluid">
-    <div class="alerta alert alert-success alert-dismissible" data-toggle="alert" role="alert" *ngIf="mostraAlerta === 1">
-        Unidade cadastrada / atualizada com sucesso!!!
-        <span class="close" data-bs-dismiss="alert" data-dismiss="alert" aria-label="Close">X</span>
-    </div>
-    <div class="alerta alert alert-danger alert-dismissible" data-toggle="alert" role="alert" *ngIf="mostraAlerta === 2">
-        Falha ao cadastrar / atualizar unidade!!!
-        <span class="close" data-bs-dismiss="alert" data-dismiss="alert" aria-label="Close">X</span>
-    </div>
-    <div class="alerta alert alert-success alert-dismissible" data-toggle="alert" role="alert" *ngIf="mostraAlerta === 3">
-        Unidade removida com sucesso!!!
-        <span class="close" data-bs-dismiss="alert" data-dismiss="alert" aria-label="Close">X</span>
-    </div>
-    <div class="alerta alert alert-danger alert-dismissible" data-toggle="alert" role="alert" *ngIf="mostraAlerta === 4">
-        Falha ao remover unidade!!!
-        <span class="close" data-bs-dismiss="alert" data-dismiss="alert" aria-label="Close">X</span>
-    </div>
+    <dih-alerta [mensagem]="'Unidade cadastrada / atualizada com sucesso!!!'" [sucessoOuFalha]="mostraAlerta" [mostraBtnFecha]="true" *ngIf="mostraAlerta === 1"></dih-alerta>
+    <dih-alerta [mensagem]="'Falha ao cadastrar / atualizar unidade!!!'" [sucessoOuFalha]="mostraAlerta" [mostraBtnFecha]="true" *ngIf="mostraAlerta === 2"></dih-alerta>
+    <dih-alerta [mensagem]="'Unidade removida com sucesso!!!'" [sucessoOuFalha]="1" [mostraBtnFecha]="true" *ngIf="mostraAlerta === 3"></dih-alerta>
+    <dih-alerta [mensagem]="'Falha ao remover unidade!!!'" [sucessoOuFalha]="2" [mostraBtnFecha]="true" *ngIf="mostraAlerta === 4"></dih-alerta>
     <div class="row">
         <button class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Cadastrar nova unidade" routerLink="/cadastro-unidade"><span><fa-icon [icon]="faStar"></fa-icon></span> Cadastrar nova unidade</button>
     </div>

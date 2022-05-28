@@ -1,0 +1,8 @@
+<div class="alerta alert alert-success alert-dismissible" data-toggle="alert" role="alert" *ngIf="sucessoOuFalha === 1 || sucessoOuFalha === 3">
+    {{mensagem}}
+    <span class="close" data-bs-dismiss="alert" data-dismiss="alert" aria-label="Close" *ngIf="mostraBtnFecha">X</span>
+</div>
+<div class="alerta alert alert-danger alert-dismissible" data-toggle="alert" role="alert" *ngIf="sucessoOuFalha === 2 || sucessoOuFalha === 4">
+    {{mensagem}}
+    <span class="close" data-bs-dismiss="alert" data-dismiss="alert" aria-label="Close" *ngIf="mostraBtnFecha">X</span>
+</div>

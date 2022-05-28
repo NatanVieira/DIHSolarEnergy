@@ -17,14 +17,14 @@ export class LoginModalRegistroComponent implements OnInit {
   }
 
   listaUsuarios: IUsuario[] = [];
-  alerta: number = 0;
+  mostrarAlerta: number = 0;
 
   constructor(private usuarioService: UsuarioService, private sessaoLocalService: SessaoLocalService) { }
 
   ngOnInit(): void {
     this.usuarioService.devolveUsuarios().subscribe((usuarios: IUsuario[]) => {this.listaUsuarios = usuarios});
     this.zeraInfoNovoUsuario();
-    this.alerta = this.sessaoLocalService.cadastroAtualizacao; 
+    this.mostrarAlerta = this.sessaoLocalService.cadastroAtualizacao; 
     this.sessaoLocalService.zeraCadastroAtualizacao();
   }
 

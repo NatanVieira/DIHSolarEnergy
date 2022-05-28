@@ -11,7 +11,5 @@
         <button type="submit" class="col btn btn-primary botao" (click)="validaUsuario()">Entrar</button>
         <button type="submit" class="col btn btn-primary botao" data-bs-toggle="modal" data-toggle="modal" data-bs-target="#modalCadastro" data-target="#modalCadastro">Registrar</button>
     </div>
-    <div class="alerta alert alert-danger alert-dismissible" data-toggle="alert" data-bs-toggle="alert" role="alert" *ngIf="!usuarioValido">
-        <span>E-mail ou senha incorretos!</span>
-    </div>
+    <dih-alerta [mensagem]="'E-mail ou senha incorretos!'" [sucessoOuFalha]="2" [mostraBtnFecha]="false" *ngIf="!usuarioValido"></dih-alerta>
 </form>

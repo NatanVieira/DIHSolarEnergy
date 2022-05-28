@@ -33,7 +33,7 @@ export class GeracaoComponent implements OnInit {
     this.unidadeService.devolveUnidadesAtivas(this.usuarioService.idUsuarioLogado).subscribe((unidades) => {
       this.listaUnidades = unidades;
     },
-    (error?) => {this.sessaoLocalService.cadastroAtualizacao = 3;
+    (error?) => {this.sessaoLocalService.cadastroAtualizacao = 4;
                  this.ngOnInit();})
   }
 

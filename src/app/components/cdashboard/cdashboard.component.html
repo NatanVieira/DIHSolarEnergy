@@ -1,12 +1,6 @@
 <div class="container-fluid">
-    <div class="alerta alert alert-success alert-dismissible" data-toggle="alert" role="alert" *ngIf="mostraAlerta === 1">
-        Geração cadastrada com sucesso!!!
-        <span class="close" data-bs-dismiss="alert" data-dismiss="alert" aria-label="Close">X</span>
-    </div>
-    <div class="alerta alert alert-danger alert-dismissible" data-toggle="alert" role="alert" *ngIf="mostraAlerta === 2">
-        Não foi possível carregar os dados da página, favor atualizar a página.
-        <span class="close" data-bs-dismiss="alert" data-dismiss="alert" aria-label="Close">X</span>
-    </div>
+    <dih-alerta [mensagem]="'Geração cadastrada com sucesso!!!'" [sucessoOuFalha]="mostraAlerta" [mostraBtnFecha]="true" *ngIf="mostraAlerta === 1"></dih-alerta>
+    <dih-alerta [mensagem]="'Não foi possível carregar os dados da página, favor atualizar a página.'" [sucessoOuFalha]="mostraAlerta" [mostraBtnFecha]="true" *ngIf="mostraAlerta === 2"></dih-alerta>
     <div class="row">
         <div class="col">
             <div class="card" style="width: 18rem;">
