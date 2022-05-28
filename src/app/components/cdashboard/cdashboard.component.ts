@@ -30,6 +30,7 @@ export class CDashboardComponent implements OnInit {
       this.unidadeService.devolveUnidadesAtivas(this.usuarioService.idUsuarioLogado).subscribe((unidades: IUnidade[]) => {
         this.geracaoService.devolveGeracoes().subscribe((geracoes: IGeracao[]) => {
           this.mediaGeracao = this.calculaMediaGeracao(geracoes, unidades);
+          this.mediaGeracao = this.mediaGeracao === NaN ? 0 : this.mediaGeracao;
         },
         (error?) => {this.sessaoLocalService.cadastroAtualizacao = 2,
                      this.ngOnInit()})
