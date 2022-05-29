@@ -27,12 +27,14 @@ Para instalar o angular cli utilize o comando npm: npm install -g @cli/angular
 
 Para instalar o json-server utilize o comando npm: npm install json-server.
 
-Depois de ter essas ferramentas instaladas, basta acessar um terminal e ir até a pasta do projeto e executar o comando "ng serve -o" e o angular cli abrirá o projeto
+Depois de ter essas ferramentas instaladas, basta acessar um terminal e ir até a pasta do projeto e executar o comando json-server --watch db.json, assim a plataforma terá acesso ao fakedatabase.
+
+Volte ao terminal e execute o comando "ng serve -o" e o angular cli abrirá o projeto
 no endereço http://localhost:4200.
 
-Volte ao terminal e execute o comando json-server --watch db.json, assim a plataforma terá acesso ao fakedatabase.
-
 Abaixo as orientações geradas automáticamente pelo angular cli.
+
+########################################################################################################
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.3.
 
