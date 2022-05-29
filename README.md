@@ -17,17 +17,23 @@ O objetivo é criar uma plataforma que simule o gerenciamento de unidades de ger
 * Tanto a média de geração quanto os dados do gráfico são baseadas nas unidades ativas.
 
 Para rodar o projeto você pode baixar o código ou clonar o repositório.
+
 Após ter o diretório em sua máquina você precisará instalar as depedências, para isso acesse o terminal e vá até a dentro da pasta do diretório e execute o comando
 npm install ou yarn install.
+
 Após instalar as depedências é necessáiro que você já tenha instalado ou instale as ferramentas angular, angular cli e json-server.
+
 Para instalar o angular cli utilize o comando npm: npm install -g @cli/angular
+
 Para instalar o json-server utilize o comando npm: npm install json-server.
 
 Depois de ter essas ferramentas instaladas, basta acessar um terminal e ir até a pasta do projeto e executar o comando "ng serve -o" e o angular cli abrirá o projeto
 no endereço http://localhost:4200.
+
 Volte ao terminal e execute o comando json-server --watch db.json, assim a plataforma terá acesso ao fakedatabase.
 
 Abaixo as orientações geradas automáticamente pelo angular cli.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.3.
 
 ## Development server
