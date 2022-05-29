@@ -23,7 +23,7 @@ npm install ou yarn install.
 
 Após instalar as depedências é necessáiro que você já tenha instalado ou instale as ferramentas angular, angular cli e json-server.
 
-Para instalar o angular cli utilize o comando npm: npm install -g @cli/angular
+Para instalar o angular cli utilize o comando npm: npm install -g @angular/cli.
 
 Para instalar o json-server utilize o comando npm: npm install json-server.
 
