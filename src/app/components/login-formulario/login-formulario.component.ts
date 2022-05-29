@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IUsuario } from 'src/app/models/iusuario.model';
+import { SessaoLocalService } from 'src/app/services/sessao-local.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
@@ -13,13 +14,16 @@ export class LoginFormularioComponent implements OnInit {
   public senha: string = '';
   public usuarioValido: boolean = true;
   private listaUsuarios: IUsuario[] = [];
-  constructor(private usuarioService: UsuarioService, private router: Router) { }
+  public mostraAlerta: number = 0;
+  constructor(private usuarioService: UsuarioService, private router: Router, private sessaoLocalService: SessaoLocalService) { }
 
   ngOnInit(): void {
     this.usuarioService.devolveUsuarios().subscribe((usuarios: IUsuario[]) => {this.listaUsuarios = usuarios});
+    this.mostraAlerta = this.sessaoLocalService.cadastroAtualizacao;
+    this.sessaoLocalService.zeraCadastroAtualizacao();
   }
   
-  validaUsuario(){
+  public validaUsuario(){
     const usuario: IUsuario | undefined = this.listaUsuarios.find(usuario => usuario.email == this.email  && atob(usuario.senha) == this.senha);
     this.usuarioService.idUsuarioLogado = usuario ? usuario.id : '';
     this.usuarioService.userNameLogado  = usuario ? usuario.user : '';

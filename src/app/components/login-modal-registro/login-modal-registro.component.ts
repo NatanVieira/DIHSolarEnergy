@@ -28,7 +28,7 @@ export class LoginModalRegistroComponent implements OnInit {
     this.sessaoLocalService.zeraCadastroAtualizacao();
   }
 
-  cadastrarUsuario() {
+  public cadastrarUsuario() {
     if(this.novoUsuario){
       if(this.listaUsuarios.find(usuario => usuario.email == this.novoUsuario.email)){
         this.sessaoLocalService.cadastroAtualizacao = 4;
@@ -65,5 +65,9 @@ export class LoginModalRegistroComponent implements OnInit {
     this.novoUsuario.senha = '';
     this.novoUsuario.confirmacaoSenha = '';
     this.novoUsuario.nomeUsuario = '';
+  }
+
+  public atualizaPagina() {
+    location.reload();
   }
 }

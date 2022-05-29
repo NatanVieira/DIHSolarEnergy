@@ -8,7 +8,7 @@ import { SessaoLocalService } from './sessao-local.service';
   providedIn: 'root'
 })
 export class UnidadeService {
-  private cEntidade: string = ''; //environment.URL_API_REST + 'unidades';
+  private cEntidade: string = '';
 
   public unidadeEditavel: any;
   constructor(private http: HttpClient, private sessaoLocalService: SessaoLocalService) { 

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IUnidade } from 'src/app/models/iunidade.model';
 import { SessaoLocalService } from 'src/app/services/sessao-local.service';
@@ -31,7 +31,7 @@ export class CadastroComponent implements OnInit {
       this.unidadeGeradora = this.unidadeService.unidadeEditavel;
   }
 
-  atualizarUnidade(){
+  public atualizarUnidade(){
     if(this.unidadeGeradora.id != undefined)
       this.alterarUnidade();
     else

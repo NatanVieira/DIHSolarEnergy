@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Registro</h5>
-                <span aria-hidden="true" type="button" class="btn" data-dismiss="modal" data-bs-dismiss="modal">&times;</span>
+                <span aria-hidden="true" type="button" class="btn" data-dismiss="modal" data-bs-dismiss="modal" (click)="atualizaPagina()">&times;</span>
             </div>
             <div class="modal-body">
                 <form #formRegistro="ngForm" (submit)="formRegistro.valid">

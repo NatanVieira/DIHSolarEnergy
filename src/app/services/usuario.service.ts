@@ -45,4 +45,10 @@ export class UsuarioService {
   private geraIDUsuario(): string {
     return String(Math.round((Math.random() * (9999999999 - 1)) + 1));
   }
+
+  public zeraInfoUsuarioLogado(){
+    this.idUsuarioLogado = '';
+    this.userNameLogado = '';
+    this.userLogado = false;
+  }
 }

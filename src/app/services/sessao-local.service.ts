@@ -17,4 +17,8 @@ export class SessaoLocalService {
   public zeraCadastroAtualizacao():void {
     setTimeout(() => {this.cadastroAtualizacao = 0}, 3000);
   }
+
+  public mudarTema(){
+    this.modo = this.modo === 'claro' ? 'escuro' : 'claro';
+  }
 }

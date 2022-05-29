@@ -9,6 +9,7 @@ import { UsuarioService } from './services/usuario.service';
 })
 export class AppComponent {
   title = 'DIHSolarEnergy';
+
   constructor(private usuarioService: UsuarioService) {
     this.usuarioService.atualizaIDUsuario();
   }
