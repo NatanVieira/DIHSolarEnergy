@@ -7,13 +7,11 @@ Bem-vindo ao repositório do meu segundo projeto da Dev In House! 😃
 O objetivo é criar uma plataforma que simule o gerenciamento de unidades de geração de energia solar.
 
 * A plataforma tem uma página de login que permite o usuário entrar ou registrar seu usuário
-* Depois de passar pelo login, o usuário é levado para a página de dashboard que mostra estatísticas sobre as suas unidades geradores, como quantidade,
+* Depois de passar pelo login, o usuário é levado para a página de dashboard que mostra estatísticas sobre as suas unidades geradoras, como quantidade,
   unidades ativas, inativas, média de geração e um gráfico com as gerações dos últimos 12 meses
 * Em todas as páginas o usuário terá acesso a um menu que pode levar ele a outras páginas ou novamente ao dashboard inicial
-* Além da página de dashboard existe a página para que lista suas unidades, nessa página o usuário pode cadastrar uma nova unidade, alterar uma unidade existente ou
-  eliminar qualquer unidade
-* Outra ferramenta que a plataforma oferece é uma página para cadastro de geração mensal, nela são listadas as unidades ativas e campos para definir a data e a
-  geração total.
+* Além da página de dashboard existe a página que lista suas unidades, nessa página o usuário pode cadastrar uma nova unidade, alterar uma unidade existente ou eliminar qualquer unidade
+* Outra ferramenta que a plataforma oferece é uma página para cadastro de geração mensal, nela são listadas as unidades ativas e campos para definir a data e a geração total.
 * Tanto a média de geração quanto os dados do gráfico são baseadas nas unidades ativas.
 
 Para rodar o projeto você pode baixar o código ou clonar o repositório.
