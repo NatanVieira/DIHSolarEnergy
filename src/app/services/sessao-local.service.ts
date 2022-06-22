@@ -10,7 +10,7 @@ export class SessaoLocalService {
   bgColor: string = '#EC6200';
   fgColor: string = 'black';
   cadastroAtualizacao: number = 0; // 0 não faz nada, 1 Sucesso, 2 Falha
-  URL_API_REST: string = 'http://localhost:3000/';
+  URL_API_REST: string = 'https://dihsolarenergy.herokuapp.com:3000/';
   
   constructor() { }
 
