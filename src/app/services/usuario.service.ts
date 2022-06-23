@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IUsuario } from '../models/iusuario.model';
@@ -14,13 +14,19 @@ export class UsuarioService {
   public userLogado: boolean = false;
   public userNameLogado: string = '';
   
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      "Access-Control-Allow-Origin": "*",
+    }), responseType: 'text' as 'json'
+  };
   constructor(private http: HttpClient, private sessaoLocalService: SessaoLocalService) {
     this.cEntidade = this.sessaoLocalService.URL_API_REST + 'usuarios';
 
    }
 
   public devolveUsuarios(): Observable<IUsuario[]>{
-    return this.http.get<IUsuario[]>(this.cEntidade);
+    return this.http.get<IUsuario[]>(this.cEntidade,this.httpOptions);
   }
 
   public salvaIDUsuarioLocalStorage(): void {
