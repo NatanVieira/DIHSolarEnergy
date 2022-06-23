@@ -9,4 +9,4 @@ app.use(express.static('./dist/dihsolar-energy'));
 app.get('/*',(req, res) => res.sendFile('index.html', {root: 'dist/dihsolar-energy/'}));
 
 //Start the app by listening on the default Heroku port
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 8080);
