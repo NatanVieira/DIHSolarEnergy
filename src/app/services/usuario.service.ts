@@ -25,8 +25,8 @@ export class UsuarioService {
 
    }
 
-  public devolveUsuarios(): Observable<IUsuario[]>{
-    return this.http.get<IUsuario[]>(this.cEntidade,this.httpOptions);
+  public devolveUsuarios(): Observable<string>{
+    return this.http.get<string>(this.cEntidade,this.httpOptions);
   }
 
   public salvaIDUsuarioLocalStorage(): void {

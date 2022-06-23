@@ -18,7 +18,7 @@ export class LoginFormularioComponent implements OnInit {
   constructor(private usuarioService: UsuarioService, private router: Router, private sessaoLocalService: SessaoLocalService) { }
 
   ngOnInit(): void {
-    this.usuarioService.devolveUsuarios().subscribe((usuarios: IUsuario[]) => {this.listaUsuarios = usuarios});
+    this.usuarioService.devolveUsuarios().subscribe((usuarios:string) => {this.listaUsuarios = JSON.parse(usuarios)});
     this.mostraAlerta = this.sessaoLocalService.cadastroAtualizacao;
     this.sessaoLocalService.zeraCadastroAtualizacao();
   }
