@@ -18,15 +18,15 @@ export class UsuarioService {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       "Access-Control-Allow-Origin": "*",
-    }), responseType: 'text' as 'json'
+    }), responseType: 'ArrayBuffer' as 'json'
   };
   constructor(private http: HttpClient, private sessaoLocalService: SessaoLocalService) {
     this.cEntidade = this.sessaoLocalService.URL_API_REST + 'usuarios';
 
    }
 
-  public devolveUsuarios(): Observable<string>{
-    return this.http.get<string>(this.cEntidade,this.httpOptions);
+  public devolveUsuarios(): Observable<IUsuario[]>{
+    return this.http.get<IUsuario[]>(this.cEntidade,this.httpOptions);
   }
 
   public salvaIDUsuarioLocalStorage(): void {

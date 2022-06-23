@@ -18,12 +18,13 @@ export class LoginFormularioComponent implements OnInit {
   constructor(private usuarioService: UsuarioService, private router: Router, private sessaoLocalService: SessaoLocalService) { }
 
   ngOnInit(): void {
-    this.usuarioService.devolveUsuarios().subscribe((usuarios:string) => {this.listaUsuarios = JSON.parse(usuarios)});
+    this.usuarioService.devolveUsuarios().subscribe((usuarios: IUsuario[]) => {this.listaUsuarios = usuarios});
     this.mostraAlerta = this.sessaoLocalService.cadastroAtualizacao;
     this.sessaoLocalService.zeraCadastroAtualizacao();
   }
   
   public validaUsuario(){
+    this.listaUsuarios.forEach(u => console.log(u));
     const usuario: IUsuario | undefined = this.listaUsuarios.find(usuario => usuario.email == this.email  && atob(usuario.senha) == this.senha);
     this.usuarioService.idUsuarioLogado = usuario ? usuario.id : '';
     this.usuarioService.userNameLogado  = usuario ? usuario.user : '';

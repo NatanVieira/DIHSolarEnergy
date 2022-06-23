@@ -22,7 +22,7 @@ export class LoginModalRegistroComponent implements OnInit {
   constructor(private usuarioService: UsuarioService, private sessaoLocalService: SessaoLocalService) { }
 
   ngOnInit(): void {
-    this.usuarioService.devolveUsuarios().subscribe((usuarios: string) => {this.listaUsuarios = JSON.parse(usuarios)});
+    this.usuarioService.devolveUsuarios().subscribe((usuarios: IUsuario[]) => {this.listaUsuarios = usuarios});
     this.zeraInfoNovoUsuario();
     this.mostrarAlerta = this.sessaoLocalService.cadastroAtualizacao; 
     this.sessaoLocalService.zeraCadastroAtualizacao();
