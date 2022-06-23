@@ -24,7 +24,7 @@ export class LoginFormularioComponent implements OnInit {
   }
   
   public validaUsuario(){
-    this.listaUsuarios.forEach(u => console.log(u));
+    this.listaUsuarios.toString();
     const usuario: IUsuario | undefined = this.listaUsuarios.find(usuario => usuario.email == this.email  && atob(usuario.senha) == this.senha);
     this.usuarioService.idUsuarioLogado = usuario ? usuario.id : '';
     this.usuarioService.userNameLogado  = usuario ? usuario.user : '';
