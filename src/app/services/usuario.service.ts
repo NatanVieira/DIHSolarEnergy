@@ -18,7 +18,7 @@ export class UsuarioService {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       "Access-Control-Allow-Origin": "*",
-    })
+    }), responseType: "ArrayBuffer" as "json",
   };
   constructor(private http: HttpClient, private sessaoLocalService: SessaoLocalService) {
     this.cEntidade = this.sessaoLocalService.URL_API_REST + 'usuarios';
