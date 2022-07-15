@@ -2,11 +2,7 @@
   "name": "dihsolar-energy",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "node server.js",
-    "build": "ng build --prod",
-    "watch": "ng build --watch --configuration development, json-server --watch db.json",
-    "test": "ng test"
+    "start": "node server.js"
   },
   "engines": {
     "node": "12.20.0",
