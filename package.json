@@ -4,8 +4,7 @@
   "scripts": {
     "ng": "ng",
     "build": "ng build",
-    "test": "ng test",
-    "postinstall": "ng build --aot -prod"
+    "test": "ng test"
   },
   "engines": {
     "node": "12.20.0",
